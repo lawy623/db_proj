@@ -110,7 +110,7 @@ def news():
 
     if result.mid:
         print "find match"
-        match = g.conn.execute("SELECT * FROM coach WHERE mid = (%s)", result.mid)
+        match = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", result.mid)
     if result.cid:
         print "find coach"
         coach = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", result.cid)
