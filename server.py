@@ -71,21 +71,6 @@ def teardown_request(exception):
 # If you wanted the user to go to, for example, localhost:8111/foobar/ with POST or GET then you could use:
 #
 #       @app.route("/foobar/", methods=["POST", "GET"])
-@app.route('/index.html')
-def index():
-    # DEBUG: this is debugging code to see what request looks like
-    print request.args
-
-    cursor = g.conn.execute("SELECT name FROM test")
-    names = []
-    for result in cursor:
-        names.append(result['name'])  # can also be accessed using result[0]
-    cursor.close()
-
-    context = dict(data = names)
-
-    return render_template("index.html", **context)
-
 class News:
     """
     Class for news.
@@ -104,7 +89,9 @@ class News:
 
 @app.route('/home')
 def home():
-
+    """
+    Home Page shows recent news. Also direct to other pages.
+    """
     news = []
     cursor = g.conn.execute("SELECT * FROM news ORDER BY date DESC")
     for result in cursor:

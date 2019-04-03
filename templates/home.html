@@ -4,23 +4,34 @@
       font-size: 8pt;
       font-family: arial;
     }
+    table{
+        border: 1px solid black;
+        cellpadding: "10";
+        border: '0';
+        width: 80%
+    }
   </style>
 
-
 <body>
-  <h1><center>News</center></h1>
 
-  <div><center>
-      {% for n in data %}
-      <div>
-          <table style="border:1px solid black;" cellpadding="10" border='0'>
-          <tr><td>{{n.title}}</td></tr>
-          <tr><td>{{n.date}}</td></tr>
-          </table>
-      </div>
-      {% endfor %}
-  </center></div>
+    <div style="overflow: auto;"><center><font size="5pt">
+    <a href="home">News</a>&nbsp;&nbsp;&nbsp;
+    <a href="match">Match</a>&nbsp;&nbsp;&nbsp;
+    <a href="team">Team</a>&nbsp;&nbsp;&nbsp;
+    <a href="player">Player</a>&nbsp;&nbsp;&nbsp;
+    </font></center></div>
 
+
+    <div><center>
+        {% for n in data %}
+        <div>
+            <table>
+            <tr><td>{{n.title}}</td></tr>
+            <tr><td>{{n.date}}</td></tr>
+            </table>
+        </div>
+        {% endfor %}
+    </center></div>
 
 </body>
 </html>
