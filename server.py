@@ -43,7 +43,7 @@ engine.execute("""CREATE TABLE IF NOT EXISTS test (
  id serial,
  name text
 );""")
-engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
+#engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
 
 
 @app.before_request
@@ -164,7 +164,7 @@ def another():
 @app.route('/add', methods=['POST'])
 def add():
   name = request.form['name']
-  g.conn.execute('INSERT INTO test VALUES (NULL, ?)', name)
+  g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
   return redirect('/')
 
 
