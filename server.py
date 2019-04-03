@@ -102,10 +102,11 @@ def home():
 
     return render_template("home.html", **context)
 
-@app.route('/news', methods=['GET','POST'])
+@app.route('/news')
 def news():
-    print request.form
-    return redirect('/')
+    nid = request.args.get('nid', default='', type=str)
+    print nid
+    return redirect('/home')
 
 # Example of adding new data to the database
 # The add from index page will directly it to here.
