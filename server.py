@@ -92,15 +92,24 @@ def home():
     """
     Home Page shows recent news. Also direct to other pages.
     """
+    news_dir = "/templates/news"
+    if not os.path.exists(news_dir):
+        os.makedirs(news_dir)
+
     news = []
     cursor = g.conn.execute("SELECT * FROM news ORDER BY date DESC")
     for result in cursor:
         news.append(News(result))
 
+
     context = dict(data = news)
 
     return render_template("home.html", **context)
 
+@app.rount('/news', methods=['GET','POST'])
+def news():
+    print request.form
+    return redirect('/')
 
 # Example of adding new data to the database
 # The add from index page will directly it to here.
