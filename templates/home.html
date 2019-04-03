@@ -34,7 +34,7 @@
             <table>
             <tr><td>
                 <form method="POST" action="/news">
-                <input type="submit" value={{n.title}}>
+                <a href="news" onclick="document.forms['id'].submit();">{{n.title}}</a>
                 </form>
             </td></tr>
             <tr><td></td><td align="right">{{n.date}}</td></tr>
