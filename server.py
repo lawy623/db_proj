@@ -92,10 +92,6 @@ def home():
     """
     Home Page shows recent news. Also direct to other pages.
     """
-    news_dir = "/templates/news"
-    if not os.path.exists(news_dir):
-        os.makedirs(news_dir)
-
     news = []
     cursor = g.conn.execute("SELECT * FROM news ORDER BY date DESC")
     for result in cursor:
