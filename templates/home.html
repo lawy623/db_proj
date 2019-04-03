@@ -33,7 +33,8 @@
         <div>
             <table>
             <tr><td>
-                <a href="{{url_for('news', nid= {{n.nid}} )}}">{{n.title}}</a>
+                var news_url = "{{url_for('news', nid =" + {{n.nid}} + ")}}"
+                <a href=news_url>{{n.title}}</a>
             </td></tr>
             <tr><td></td><td align="right">{{n.date}}</td></tr>
             <br>
