@@ -86,13 +86,27 @@ def index():
 
     return render_template("index.html", **context)
 
+class News:
+    def __init__(self, result):
+        self.nid = result['nid']
+        self.title = result['title']
+
 
 @app.route('/home')
 def home():
+
+    news = []
+    cursor = g.conn.execute("SELECT * FROM news")
+    for result in cursor:
+        news.append(News(result))
+        print news[0].nid
+
     return render_template("home.html")
 
 
 # Example of adding new data to the database
+# The add from index page will directly it to here.
+# And it will also redirect back to the home page.
 @app.route('/add', methods=['POST'])
 def add():
     name = request.form['name']
