@@ -72,9 +72,6 @@ def teardown_request(exception):
 #
 #       @app.route("/foobar/", methods=["POST", "GET"])
 class News:
-    """
-    Class for news.
-    """
     def __init__(self, result):
         self.nid = result['nid']
         self.title = result['title']
@@ -89,9 +86,6 @@ class News:
 
 @app.route('/home')
 def home():
-    """
-    Home Page shows recent news. Also direct to other pages.
-    """
     news = []
     cursor = g.conn.execute("SELECT * FROM news ORDER BY date DESC")
     for result in cursor:
@@ -108,23 +102,36 @@ def news():
     result = cursor.fetchone()
 
     if result.mid:
-        print "find match"
         match = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", result.mid)
     if result.cid:
-        print "find coach"
         coach = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", result.cid)
     if result.cname:
-        print "find team"
-        team = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s)", result.cname, result.nation)
-    return render_template("news.html", data = result)
+        team = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s) AND level = (%s)", result.cname, result.nation, result.level)
+    return render_template("news.html", news = result, match = match, coach = coach, team = team)
 
 
-@app.route('/coach')
+@app.route('/coach', methods=['GET','POST'])
 def coach():
-    cid = request.args.get('cid')
-    print cid
-    
-    return redirect('/')
+    if request.method == 'POST':
+        cid = request.args.get('cid')
+        print cid
+
+        return redirect('/home')
+    else:
+        print "now post"
+
+@app.route('/match')
+def match():
+    pass
+
+@app.route('/team')
+def team():
+    pass
+
+@app.route('/player')
+def player():
+    pass
+
 
 # Example of adding new data to the database
 # The add from index page will directly it to here.

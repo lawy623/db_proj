@@ -31,18 +31,24 @@
     <div><center>
         <a href="home"><font size="2pt">back</a><br><br>
         <div>
-            <h1><font size="5pt"> {{data.title}} </h1>
+            <h1><font size="5pt"> {{news.title}} </h1>
             <h2><font size="4pt">
-                <span>{{data.author}}</span>&nbsp&nbsp&nbsp
-                <span>{{data.date}}</span>
+                <span>{{news.author}}</span>&nbsp&nbsp&nbsp
+                <span>{{news.date}}</span>
             </h2>
         </div>
         <div style="width: 50%">
-            <p><font size="3pt">{{data.content}}</p>
+            <p><font size="3pt">{{news.content}}</p>
         </div>
         <div>
-            {%- if data.cid -%}
-                <a href="{{url_for('coach', cid = data.cid )}}">coach_name</a>
+            {%- if news.cid -%}
+                <a href="{{url_for('coach', cid = news.cid )}}">"Coach"+coach.name</a>
+            {%- endif %}
+            {%- if news.mid -%}
+                <a href="{{url_for('match', mid = news.mid )}}">match.host+" vs "+match.guest</a>
+            {%- endif %}
+            {%- if news.cname -%}
+                <a href="{{url_for('team', cname = news.cname, nation = news.nation, level = news.level )}}">news.cname</a>
             {%- endif %}
         </div>
     </center></div>
