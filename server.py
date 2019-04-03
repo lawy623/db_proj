@@ -106,10 +106,11 @@ class News:
 def home():
 
     news = []
-    cursor = g.conn.execute("SELECT * FROM news")
+    cursor = g.conn.execute("SELECT * FROM news ORDER BY date DESC")
     for result in cursor:
         news.append(News(result))
-        print news[len(news)-1].title
+
+    context = dict(data = news)
 
     return render_template("home.html")
 
