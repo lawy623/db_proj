@@ -87,10 +87,6 @@ def index():
     return render_template("index.html", **context)
 
 
-@app.route('/another')
-def another():
-    return render_template("another.html")
-
 @app.route('/home')
 def home():
     return render_template("home.html")
