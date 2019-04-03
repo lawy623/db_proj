@@ -105,8 +105,9 @@ def home():
 @app.route('/news')
 def news():
     nid = request.args.get('nid')
-    print nid
-    return redirect('/home')
+    cursor = g.conn.execute("SELECT * FROM news WHERE nid = (%s)", nid)
+    result = cursor.fetchone()
+    return render_template("news.html", data = result)
 
 # Example of adding new data to the database
 # The add from index page will directly it to here.
