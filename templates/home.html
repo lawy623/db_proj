@@ -32,7 +32,9 @@
         {% for n in data %}
         <div>
             <table>
-            <tr><td><a href="home">{{n.title}}</a></td></tr>
+            <tr><td>
+                <a href="news{{n.nid}}"">{{n.title}}</a>
+            </td></tr>
             <tr><td></td><td align="right">{{n.date}}</td></tr>
             <br>
             </table>
