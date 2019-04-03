@@ -102,7 +102,7 @@ def home():
 
     return render_template("home.html", **context)
 
-@app.rount('/news', methods=['GET','POST'])
+@app.route('/news', methods=['GET','POST'])
 def news():
     print request.form
     return redirect('/')
