@@ -112,7 +112,7 @@ def home():
 
     context = dict(data = news)
 
-    return render_template("home.html")
+    return render_template("home.html", **context)
 
 
 # Example of adding new data to the database
