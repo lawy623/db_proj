@@ -97,7 +97,6 @@ def home():
     for result in cursor:
         news.append(News(result))
 
-
     context = dict(data = news)
 
     return render_template("home.html", **context)
@@ -118,6 +117,14 @@ def news():
         print "find team"
         team = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s)", result.cname, result.nation)
     return render_template("news.html", data = result)
+
+
+@app.route('/coach')
+def coach():
+    cid = request.args.get('cid')
+    print cid
+    
+    return redirect('/')
 
 # Example of adding new data to the database
 # The add from index page will directly it to here.
