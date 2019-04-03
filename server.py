@@ -87,7 +87,7 @@ def teardown_request(exception):
 # see for routing: http://flask.pocoo.org/docs/0.10/quickstart/#routing
 # see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 #
-@app.route('/')
+@app.route('/index.html')
 def index():
   """
   request is a special object that Flask provides to access web request information:
@@ -168,10 +168,9 @@ def add():
   return redirect('/')
 
 
-@app.route('/login')
-def login():
-    abort(401)
-    this_is_never_executed()
+@app.route('/')
+def main():
+    return render_template("main.html")
 
 
 if __name__ == "__main__":
