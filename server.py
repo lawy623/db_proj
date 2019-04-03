@@ -107,6 +107,16 @@ def news():
     nid = request.args.get('nid')
     cursor = g.conn.execute("SELECT * FROM news WHERE nid = (%s)", nid)
     result = cursor.fetchone()
+
+    if result.mid:
+        print "find match"
+        match = g.conn.execute("SELECT * FROM coach WHERE mid = (%s)", result.mid)
+    if result.cid:
+        print "find coach"
+        coach = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", result.cid)
+    if result.cname:
+        print "find team"
+        team = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s)", result.cname, result.nation)
     return render_template("news.html", data = result)
 
 # Example of adding new data to the database
