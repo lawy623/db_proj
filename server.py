@@ -87,9 +87,19 @@ def index():
     return render_template("index.html", **context)
 
 class News:
+    """
+    Class for news.
+    """
     def __init__(self, result):
         self.nid = result['nid']
         self.title = result['title']
+        self.author = result['author']
+        self.date = result['date']
+        self.content = result['content']
+        self.mid = result['mid']
+        self.cid = result['cid']
+        self.cname = result['cname']
+        self.nation = result['nation']
 
 
 @app.route('/home')
@@ -99,7 +109,7 @@ def home():
     cursor = g.conn.execute("SELECT * FROM news")
     for result in cursor:
         news.append(News(result))
-        print news[0].nid
+        print news[len(news)-1].title
 
     return render_template("home.html")
 
