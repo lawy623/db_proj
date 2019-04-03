@@ -91,6 +91,10 @@ def index():
 def another():
     return render_template("another.html")
 
+@app.route('/home')
+def home():
+    return render_template("home.html")
+
 
 # Example of adding new data to the database
 @app.route('/add', methods=['POST'])
