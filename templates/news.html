@@ -20,7 +20,26 @@
 
 <body>
 
-    <div><p>{{data.content}}</p></div>
+    <div style="overflow: auto;"><center><font size="5pt">
+    <a href="home">News</a>&nbsp;&nbsp;&nbsp;
+    <a href="match">Match</a>&nbsp;&nbsp;&nbsp;
+    <a href="team">Team</a>&nbsp;&nbsp;&nbsp;
+    <a href="player">Player</a>&nbsp;&nbsp;&nbsp;
+    </font></center></div>
+    <br><br><br>
+
+    <div><center>
+        <div>
+            <h1><font size="5pt"> {{data.title}} </h1>
+            <h2><font size="4pt">
+                <span>{{data.author}}</span>
+                <span>{{data.date}}</span>
+            </h2>
+        </div>
+        <div>
+            <p><font size="3pt">{{data.title}}</p>
+        </div>
+    </center></div>
 
 </body>
 </html>
