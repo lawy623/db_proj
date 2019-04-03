@@ -104,7 +104,7 @@ def home():
 
 @app.route('/news')
 def news():
-    nid = request.args.get('nid', default='', type=str)
+    nid = request.args.get('nid')
     print nid
     return redirect('/home')
 
