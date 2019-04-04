@@ -34,18 +34,20 @@
             <h2><font size="5pt"> Date: {{match.date}}</h2>
             <h3><font size="5pt"> Time: {{match.time}}</h3>
             <h1><font size="5pt"> Stadium: {{stadium}}</h1>
-            <div style="overflow: auto;float:left;"><font size="6pt">
-                <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br>
-                {% for m in home_scores %}
-                    <h>({{m.number}}){{m.name}}x{{m.goal_num}}</h><br>
-                {% endfor %}
-            </div>
-            <div style="float:center;"><font size="6pt">&nbsp;&nbsp; {{num_home_scores}} : {{num_guest_scores}} &nbsp;&nbsp;</div>
-            <div style="overflow: auto;float:right;"><font size="6pt">
-                <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br>
-                {% for m in guest_scores %}
-                    <h>({{m.number}}){{m.name}}x{{m.goal_num}}</h><br>
-                {% endfor %}
+            <div>
+                <div style="float: left;width:40%;"><font size="6pt">
+                    <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br>
+                    {% for m in home_scores %}
+                        <h>({{m.number}}){{m.name}}&nbsp x{{m.goal_num}}</h><br>
+                    {% endfor %}
+                </div>
+                <div style="float: left;width:20%;"><font size="6pt">&nbsp;&nbsp; {{num_home_scores}} : {{num_guest_scores}} &nbsp;&nbsp;</div>
+                <div style="float: left;width:40%;"><font size="6pt">
+                    <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br>
+                    {% for m in guest_scores %}
+                        <h>({{m.number}}){{m.name}}x{{m.goal_num}}</h><br>
+                    {% endfor %}
+                </div>
             </div>
     </center></div>
 
