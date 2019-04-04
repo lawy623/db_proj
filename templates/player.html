@@ -51,13 +51,13 @@
             <tr>
                 <td><td align="left" width="20%">{{s.date}}</td>
                 <td><td align="left" width="15%" style="border-left:1px solid black">{{s.time}}</td>
-                <td><td align="left" width="100%" style="border-left:1px solid black">
+                <td><td align="left" width="60%" style="border-left:1px solid black">
                     <a href="{{url_for('team', nation = s.nation, level = s.level, cname = s.host )}}">{{s.host}}</a>
                     &nbsp; vs &nbsp;
                     <a href="{{url_for('team', nation = s.nation, level = s.level, cname = s.guest )}}">{{s.guest}}</a>
                 </td>
-                <td><td align="left" width="15%" style="border-left:1px solid black">x{{s.goal_num}}</td>
-                <td><td align="right" width="15%" style="border-left:1px solid black"><a href="{{url_for('match', mid = s.mid )}}"> See Match Details</a></td>
+                <td><td align="left" width="30%" style="border-left:1px solid black">x{{s.goal_num}}</td>
+                <td><td align="right" width="30%" style="border-left:1px solid black"><a href="{{url_for('match', mid = s.mid )}}"> See Match Details</a></td>
             </tr>
             </table>
         {% endfor %}
