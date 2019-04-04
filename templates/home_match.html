@@ -41,19 +41,19 @@
             {% endfor %}
         </div>
 
-        <div id="Matches" style="width:60%;height:100%;float:left;"><font size="2pt">
+        <div id="Matches" style="width:50%;height:100%;float:left;"><font size="2pt">
             <h> <font size="6pt"> Schedule </h><br><br>
             {% for m in matches %}
                 <table>
                 <tr>
-                    <td><td align="left" width="20%">{{m.date}}</td>
-                    <td><td align="left" width="20%" style="border-left:1px solid black">{{m.time}}</td>
+                    <td><td align="left" width="15%">{{m.date}}</td>
+                    <td><td align="left" width="15%" style="border-left:1px solid black">{{m.time}}</td>
                     <td><td align="left" width="100%" style="border-left:1px solid black">
                         <a href="{{url_for('team', nation = m.nation, level = m.level, cname = m.host )}}">{{m.host}}</a>
                         &nbsp; vs &nbsp;
                         <a href="{{url_for('team', nation = m.nation, level = m.level, cname = m.guest )}}">{{m.guest}}</a>
                     </td>
-                    <td><td align="right" width="20%" style="border-left:1px solid black"><a href="{{url_for('match', mid = m.mid )}}">Details</a></td>
+                    <td><td align="right" width="15%" style="border-left:1px solid black"><a href="{{url_for('match', mid = m.mid )}}">Details</a></td>
                 </tr>
                 </table>
             {% endfor %}
