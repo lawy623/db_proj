@@ -11,6 +11,9 @@
         width: 100px
         height: 100px
     }
+    tr {
+        border-bottom: solid 1px black;
+    }
   </style>
   <style type="text/css">
   a:link,
@@ -61,25 +64,25 @@
         <h> <font size="6pt"> Players </h><br><br>
             <table style="width:50%">
             <tr>
-                <td><td align="left" width="15%"">Number</td>
-                <td><td align="left" width="15%">Name</td>
-                <td><td align="left" width="10%">Position</td>
-                <td><td align="left" width="10%">Nationality</td>
-                <td><td align="left" width="10%">Since</td>
-                <td><td align="left" width="10%">Price</td>
-                <td><td align="left" width="10%">Height</td>
-                <td><td align="left" width="10%">Foot</td>
+                <td>Number</td>
+                <td>Name</td>
+                <td>Position</td>
+                <td>Nationality</td>
+                <td>Since</td>
+                <td>Price</td>
+                <td>Height</td>
+                <td>Foot</td>
             </tr>
         {% for p in players %}
             <tr>
-                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.number}}</td>
-                <td><td align="left" width="10%" style="border-top:1px solid black"><a href="{{url_for('player', number = p.number, nation = p.nation, level = p.level, cname = p.cname )}}">{{p.name}}</a></td>
-                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.position}}</td>
-                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.nationality}}</td>
-                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.since}}</td>
-                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.price}}</td>
-                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.height}}</td>
-                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.foot}}</td>
+                <td>{{p.number}}</td>
+                <td><a href="{{url_for('player', number = p.number, nation = p.nation, level = p.level, cname = p.cname )}}">{{p.name}}</a></td>
+                <td>{{p.position}}</td>
+                <td>{{p.nationality}}</td>
+                <td>{{p.since}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.height}}</td>
+                <td>{{p.foot}}</td>
             </tr>
         {% endfor %}
             </table>
