@@ -152,7 +152,6 @@ def home_team():
         cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation_default, level_default)
         for result in cursor_teams:
             teams.append(Team(result))
-            print result['cname']
 
         return render_template("home_team.html", leagues = leagues, nation = nation_default, level_default = level_default, teams = teams)
     else:
@@ -160,7 +159,6 @@ def home_team():
         cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
         for result in cursor_teams:
             teams.append(Team(result))
-            print result['cname']
 
         return render_template("home_team.html", leagues = leagues, nation = nation, level_default = level, teams = teams)
 
@@ -174,7 +172,7 @@ def news():
     nid = request.args.get('nid')
     cursor = g.conn.execute("SELECT * FROM news WHERE nid = (%s)", nid)
     result = cursor.fetchone()
-    if not result.nid:
+    if not result.nid: # The enquired news is not in db. May be deleted.
         return render_template("notfound.html")
 
     match = ""
