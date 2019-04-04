@@ -310,7 +310,9 @@ def player():
     for result in cursor_scores:
         scores.append(Score(result))
 
-    return render_template("player.html", player = player, scores = scores)
+    any_score = len(scores)
+
+    return render_template("player.html", player = player, any_score = any_score, scores = scores)
 
 
 # Example of adding new data to the database
