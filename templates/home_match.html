@@ -34,19 +34,19 @@
         <div id="leagues" style="width:40%;height:100%;float:left;"><font size="4pt">
             {% for l in leagues %}
                 {% if l.nation == nation and l.level == level %}
-                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}" style="color:#FF0000;">{{l.name}}</a><br><br><br>
+                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_match', nation = l.nation, level = l.level )}}" style="color:#FF0000;">{{l.name}}</a><br><br><br>
                 {% else %}
-                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}">{{l.name}}</a><br><br><br>
+                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_match', nation = l.nation, level = l.level )}}">{{l.name}}</a><br><br><br>
                 {% endif %}
             {% endfor %}
         </div>
 
         <div id="Matches" style="width:40%;height:100%;float:left;"><font size="2pt">
-            <h> <font size="6pt"> Ranking </h><br><br>
+            <h> <font size="6pt"> Schedule </h><br><br>
             {% for m in matches %}
                 <table>
                 <tr>
-                    <td><td align="left" width="20%" style="border-left:1px solid black">{{m.date}}</td>
+                    <td><td align="left" width="20%">{{m.date}}</td>
                     <td><td align="left" width="20%" style="border-left:1px solid black">{{m.time}}</td>
                     <td><td align="left" width="80%" style="border-left:1px solid black">
                         <a href="{{url_for('team', nation = m.nation, level = m.level, cname = m.host )}}">{{m.host}}</a>
