@@ -173,11 +173,7 @@ def team():
     cname = request.args.get('cname')
     nation = request.args.get('nation')
     level = request.args.get('level')
-
-
-    if cname:
-        return render_template("team.html",  = coach)
-    else:
+    pass
 
 
 @app.route('/player')
