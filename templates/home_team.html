@@ -30,18 +30,18 @@
     <br><br><br><br>
 
     <a href="home"><center><font size="2pt">home</center></a><br><br><br><br>
-    <div id="leagues" style="width:40%;float:left;"><font size="4pt">
+    <div id="leagues" style="width:40%;height:100%;float:left;"><font size="4pt">
         {% for l in leagues %}
-            &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}">l.name</a><br>
+            &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}">{{l.name}}</a><br>
         {% endfor %}
     </div>
     <h> Ranking </h><font size="10pt">
-    <div id="Teams" style="width:60%;float:level;"><font size="2pt">
+    <div id="Teams" style="width:60%;height:100%;float:level;"><font size="2pt">
         {% for t in teams %}
             <table>
             <tr>
-                <td><td align="left" width="80%"> <a href="{{url_for('team', nation = t.nation, level = t.level, cname =t.cname )}}">t.cname</a></td>
-                <td><td align="right" width="20%" style="border-left:1px solid black"> t.rank</td>
+                <td><td align="left" width="80%"> <a href="{{url_for('team', nation = t.nation, level = t.level, cname =t.cname )}}">{{t.cname}}</a></td>
+                <td><td align="right" width="20%" style="border-left:1px solid black">{{t.rank}}</td>
             </tr>
             <br>
             </table>
