@@ -201,8 +201,6 @@ def home_team():
         cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
         for result in cursor_teams:
             teams.append(Team(result))
-        print nation
-        print level
         return render_template("home_team.html", leagues = leagues, nation = nation, level = int(level), teams = teams)
 
 
