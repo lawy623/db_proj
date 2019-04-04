@@ -84,6 +84,25 @@ class News:
         self.nation = result['nation']
         self.level = result['level']
 
+class League:
+    def __init__(self, result):
+        self.name = result['name']
+        self.nation = result['nation']
+        self.level = result['level']
+
+class Team:
+    def __init__(self, result):
+        self.rank = result['rank']
+        self.stadium = result['stadium']
+        self.city = result['city']
+        self.year = result['year']
+        self.sponsor = result['sponsor']
+        self.cid = result['cid']
+        self.cname = result['cname']
+        self.nation = result['nation']
+        self.level = result['level']
+
+
 @app.route('/')
 def main():
     return render_template("main.html")
@@ -101,11 +120,50 @@ def home():
 
 @app.route('/home_match')
 def home_match():
-    pass
+    nation = request.args.get('nation')
+    level = request.args.get('level')
+
+    leagues = [] # All the leagues that contains team infomation.
+    cursor_leagues = g.conn.execute("SELECT DISTINCT L.nation, L.level, L.name FROM league L JOIN club C ON L.nation = C.nation AND L.level = C.level ORDER BY L.nation, L.level")
+    for result in cursor_leagues:
+        leagues.append(League(result))
+
+    if not nation and not level:
+
+
+        return render_template("home_match.hmtl", leagues = leagues, ind = 0, teams = teams)
+    else:
+        cursor_teams = g.conn.execute("SELECT * FROM league L JOIN club C ON L.nation = C.nation AND L.level = C.level ORDER BY L.nation, L.level, C.rank")
 
 @app.route('/home_team')
 def home_team():
-    pass
+    nation = request.args.get('nation')
+    level = request.args.get('level')
+
+    leagues = [] # All the leagues that contains team infomation.
+    cursor_leagues = g.conn.execute("SELECT DISTINCT L.nation, L.level, L.name FROM league L JOIN club C ON L.nation = C.nation AND L.level = C.level ORDER BY L.nation, L.level")
+    for result in cursor_leagues:
+        leagues.append(League(result))
+
+    if not nation and not level:
+        nation_default = leagues[0].nation
+        level_default = leagues[0].level
+        teams = []
+        cursor_teams = g.conn.execute("SELECT * FROM club ON nation = (%s) AND level = (%s) ORDER BY rank ASC", nation_default, level_default)
+        for result in cursor_teams:
+            teams.append(Team(result))
+            print result['cname']
+
+        return render_template("home_team.hmtl", leagues = leagues, nation = nation_default, level_default = level_default, teams = teams)
+    else:
+        teams = []
+        cursor_teams = g.conn.execute("SELECT * FROM club ON nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
+        for result in cursor_teams:
+            teams.append(Team(result))
+            print result['cname']
+
+        return render_template("home_team.hmtl", leagues = leagues, nation = nation, level_default = level, teams = teams)
+
 
 @app.route('/home_score')
 def home_score():
@@ -156,18 +214,6 @@ def match():
         return redirect('/home')
     else:
         return redirect('/')
-
-class Team:
-    def __init__(self, result):
-        self.rank = result['rank']
-        self.stadium = result['stadium']
-        self.city = result['city']
-        self.year = result['year']
-        self.sponsor = result['sponsor']
-        self.cid = result['cid']
-        self.cname = result['cname']
-        self.nation = result['nation']
-        self.level = result['level']
 
 
 @app.route('/team')
