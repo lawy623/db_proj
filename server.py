@@ -261,10 +261,21 @@ def team():
     if not team.cname: # The enquired player is not in db. May be deleted.
         return render_template("notfound.html")
 
-    leagues = g.conn.execute("SELECT * FROM league WHERE nation = (%s) AND level = (%s)", nation, level)
-    league = leagues.fetchone()
+    # matches of the team:
+    matches = []
+    cursor_matches = g.conn.execute("SELECT * FROM match WHERE host = (%s) OR guest = (%s) AND nation = (%s) AND level = (%s) ORDER BY date, time", cname, cname, nation, level)
+    for result in cursor_matches:
+        matches.append(Match(result))
+    # coach:
+    cursor_coach = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", team.cid)
+    coach = cursor_coach.fetchone()
+    # players:
+    players = []
+    cursor_players = g.conn.execute("SELECT * FROM player WHERE cname = (%s) AND nation = (%s) AND level = (%s) ORDER BY number", cname, nation, level)
+    for result in cursor_players:
+        players.append(Player(result))
 
-    return render_template("team.html", team = team, league = league)
+    return render_template("team.html", team = team, league = league, matches = matches, coach = coach, players = players)
 
 
 @app.route('/player')
