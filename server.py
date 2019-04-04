@@ -174,7 +174,7 @@ def home_match():
         cursor_matches = g.conn.execute("SELECT * FROM match WHERE nation = (%s) AND level = (%s) ORDER BY date, time ASC", nation, level)
         for result in cursor_matches:
             matches.append(Match(result))
-            
+
         return render_template("home_match.html", leagues = leagues, nation = nation, level = level, matches = matches)
 
 @app.route('/home_team')
@@ -201,7 +201,8 @@ def home_team():
         cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
         for result in cursor_teams:
             teams.append(Team(result))
-
+        print nation
+        print level
         return render_template("home_team.html", leagues = leagues, nation = nation, level = level, teams = teams)
 
 
