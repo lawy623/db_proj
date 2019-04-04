@@ -90,6 +90,13 @@ class League:
         self.nation = result['nation']
         self.level = result['level']
 
+class Coach:
+    def __init__(self, result):
+        self.cid = result['cid']
+        self.name = result['name']
+        self.age = result['age']
+        self.nationality = result['nationality']
+
 class Team:
     def __init__(self, result):
         self.rank = result['rank']
@@ -99,6 +106,31 @@ class Team:
         self.sponsor = result['sponsor']
         self.cid = result['cid']
         self.cname = result['cname']
+        self.nation = result['nation']
+        self.level = result['level']
+
+class Player:
+    def __init__(self, result):
+        self.number = result['number']
+        self.age = result['age']
+        self.position = result['position']
+        self.price = result['price']
+        self.height = result['height']
+        self.nationality = result['nationality']
+        self.name = result['name']
+        self.since = result['since']
+        self.cname = result['cname']
+        self.nation = result['nation']
+        self.level = result['level']
+        self.foot = result['foot']
+
+class Match:
+    def __init__(self, result):
+        self.mid = result['mid']
+        self.date = result['date']
+        self.time = result['time']
+        self.host = result['host']
+        self.guest = result['guest']
         self.nation = result['nation']
         self.level = result['level']
 
@@ -129,11 +161,21 @@ def home_match():
         leagues.append(League(result))
 
     if not nation and not level:
+        nation_default = leagues[0].nation
+        level_default = leagues[0].level
+        matches = []
+        cursor_matches = g.conn.execute("SELECT * FROM match WHERE nation = (%s) AND level = (%s) ORDER BY date, time ASC", nation_default, level_default)
+        for result in cursor_matches:
+            matches.append(Match(result))
 
-
-        return render_template("home_match.html", leagues = leagues, ind = 0, teams = teams)
+        return render_template("home_match.html", leagues = leagues, nation = nation_default, level = level_default, matches = matches)
     else:
-        cursor_teams = g.conn.execute("SELECT * FROM league L JOIN club C ON L.nation = C.nation AND L.level = C.level ORDER BY L.nation, L.level, C.rank")
+        matches = []
+        cursor_matches = g.conn.execute("SELECT * FROM match WHERE nation = (%s) AND level = (%s) ORDER BY date, time ASC", nation, level)
+        for result in cursor_matches:
+            matches.append(Match(result))
+            
+        return render_template("home_match.html", leagues = leagues, nation = nation, level = level, matches = matches)
 
 @app.route('/home_team')
 def home_team():
@@ -153,14 +195,14 @@ def home_team():
         for result in cursor_teams:
             teams.append(Team(result))
 
-        return render_template("home_team.html", leagues = leagues, nation = nation_default, level_default = level_default, teams = teams)
+        return render_template("home_team.html", leagues = leagues, nation = nation_default, level = level_default, teams = teams)
     else:
         teams = []
         cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
         for result in cursor_teams:
             teams.append(Team(result))
 
-        return render_template("home_team.html", leagues = leagues, nation = nation, level_default = level, teams = teams)
+        return render_template("home_team.html", leagues = leagues, nation = nation, level = level, teams = teams)
 
 
 @app.route('/home_score')
@@ -189,12 +231,6 @@ def news():
         team = teames.fetchone()
     return render_template("news.html", news = result, match = match, coach = coach, team = team)
 
-class Coach:
-    def __init__(self, result):
-        self.cid = result['cid']
-        self.name = result['name']
-        self.age = result['age']
-        self.nationality = result['nationality']
 
 @app.route('/coach')
 def coach():

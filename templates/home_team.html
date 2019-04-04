@@ -33,12 +33,17 @@
     <div>
         <div id="leagues" style="width:40%;height:100%;float:left;"><font size="4pt">
             {% for l in leagues %}
-                &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}">{{l.name}}</a><br><br><br>
+                {%- if l.nation = nation and l.level = level  -%}
+                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}" style="color:#FF0000;">{{l.name}}</a><br><br><br>
+                {% - else %}
+                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}">{{l.name}}</a><br><br><br>
+                {%- endif %}
+
             {% endfor %}
         </div>
 
         <div id="Teams" style="width:40%;height:100%;float:left;"><font size="2pt">
-            <h> <font size="6pt"> Ranking </h><br>
+            <h> <font size="6pt"> Ranking </h><br><br>
             {% for t in teams %}
                 <table>
                 <tr>
