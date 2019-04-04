@@ -82,7 +82,11 @@ class News:
         self.cid = result['cid']
         self.cname = result['cname']
         self.nation = result['nation']
+        self.level = result['level']
 
+@app.route('/')
+def main():
+    return render_template("main.html")
 
 @app.route('/home')
 def home():
@@ -95,7 +99,19 @@ def home():
 
     return render_template("home.html", **context)
 
-@app.route('/news')
+@app.route('/home_match')
+def home_match():
+    pass
+
+@app.route('/home_team')
+def home_team():
+    pass
+
+@app.route('/home_score')
+def home_score():
+    pass
+
+@app.route('/news') # This gets nid from '/home'
 def news():
     nid = request.args.get('nid')
     cursor = g.conn.execute("SELECT * FROM news WHERE nid = (%s)", nid)
@@ -122,7 +138,7 @@ class Coach:
         self.age = result['age']
         self.nationality = result['nationality']
 
-@app.route('/coach', methods=['GET','POST'])
+@app.route('/coach')
 def coach():
     cid = request.args.get('cid')
     coaches = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", cid)
@@ -131,19 +147,38 @@ def coach():
     return render_template("coach.html", coach = coach)
 
 
-@app.route('/match', methods=['GET','POST'])
+@app.route('/match')
 def match():
     mid = request.args.get('mid')
     if mid :
-
-
         return redirect('/home')
     else:
         return redirect('/')
 
+class Team:
+    def __init__(self, result):
+        self.rank = result['rank']
+        self.stadium = result['stadium']
+        self.city = result['city']
+        self.year = result['year']
+        self.sponsor = result['sponsor']
+        self.cid = result['cid']
+        self.cname = result['cname']
+        self.nation = result['nation']
+        self.level = result['level']
+
+
 @app.route('/team')
 def team():
-    pass
+    cname = request.args.get('cname')
+    nation = request.args.get('nation')
+    level = request.args.get('level')
+
+
+    if cname:
+        return render_template("team.html",  = coach)
+    else:
+
 
 @app.route('/player')
 def player():
@@ -160,9 +195,7 @@ def add():
     return redirect('/')
 
 
-@app.route('/')
-def main():
-    return render_template("main.html")
+
 
 
 if __name__ == "__main__":
