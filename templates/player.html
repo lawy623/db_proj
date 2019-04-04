@@ -43,16 +43,18 @@
         <h><font size="4.5pt"> Foot: {{player.foot}} </h><br><br>
 
         <br><br><br>
-        <h> <font size="6pt"> Score </h><br><br>
+        {% if len(score) > 0 %}
+            <h> <font size="6pt"> Scores </h><br><br>
+        {% endif %}
         {% for s in scores %}
             <table style="width:40%">
             <tr>
                 <td><td align="left" width="20%">{{s.date}}</td>
                 <td><td align="left" width="15%" style="border-left:1px solid black">{{s.time}}</td>
                 <td><td align="left" width="100%" style="border-left:1px solid black">
-                    <a href="{{url_for('team', nation = s.nation, level = s.level, cname = s.host )}}">{{m.host}}</a>
+                    <a href="{{url_for('team', nation = s.nation, level = s.level, cname = s.host )}}">{{s.host}}</a>
                     &nbsp; vs &nbsp;
-                    <a href="{{url_for('team', nation = m.nation, level = s.level, cname = s.guest )}}">{{m.guest}}</a>
+                    <a href="{{url_for('team', nation = m.nation, level = s.level, cname = s.guest )}}">{{s.guest}}</a>
                 </td>
                 <td><td align="left" width="15%" style="border-left:1px solid black">x{{s.goal_num}}</td>
                 <td><td align="right" width="15%" style="border-left:1px solid black"><a href="{{url_for('match', mid = s.mid )}}"> See Match Details</a></td>
