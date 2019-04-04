@@ -59,27 +59,27 @@
     </div>
     <div id="Players" style="overflow: auto;float:left;width:60%;"><font size="2pt">
         <h> <font size="6pt"> Players </h><br><br>
-            <table style="width:50%;"">
+            <table style="width:50%">
             <tr>
-                <td><td align="left" width="15%" style="border-left:1px solid black">Number</td>
-                <td><td align="left" width="15%" style="border-left:1px solid black">Name</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">Position</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">Nationality</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">Since</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">Price</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">Height</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">Foot</td>
+                <td><td align="left" width="15%"">Number</td>
+                <td><td align="left" width="15%">Name</td>
+                <td><td align="left" width="10%">Position</td>
+                <td><td align="left" width="10%">Nationality</td>
+                <td><td align="left" width="10%">Since</td>
+                <td><td align="left" width="10%">Price</td>
+                <td><td align="left" width="10%">Height</td>
+                <td><td align="left" width="10%">Foot</td>
             </tr>
         {% for p in players %}
             <tr>
-                <td><td align="left" width="10%" style="border-left:1px solid black">{{p.number}}</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black"><a href="{{url_for('player', number = p.number, nation = p.nation, level = p.level, cname = p.cname )}}">{{p.name}}</a></td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">{{p.position}}</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">{{p.nationality}}</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">{{p.since}}</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">{{p.price}}</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">{{p.height}}</td>
-                <td><td align="left" width="10%" style="border-left:1px solid black">{{p.foot}}</td>
+                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.number}}</td>
+                <td><td align="left" width="10%" style="border-top:1px solid black"><a href="{{url_for('player', number = p.number, nation = p.nation, level = p.level, cname = p.cname )}}">{{p.name}}</a></td>
+                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.position}}</td>
+                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.nationality}}</td>
+                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.since}}</td>
+                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.price}}</td>
+                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.height}}</td>
+                <td><td align="left" width="10%" style="border-top:1px solid black">{{p.foot}}</td>
             </tr>
         {% endfor %}
             </table>
