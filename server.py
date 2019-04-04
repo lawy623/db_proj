@@ -149,7 +149,7 @@ def home_team():
         nation_default = leagues[0].nation
         level_default = leagues[0].level
         teams = []
-        cursor_teams = g.conn.execute("SELECT * FROM club ON nation = (%s) AND level = (%s) ORDER BY rank ASC", nation_default, level_default)
+        cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation_default, level_default)
         for result in cursor_teams:
             teams.append(Team(result))
             print result['cname']
@@ -157,7 +157,7 @@ def home_team():
         return render_template("home_team.hmtl", leagues = leagues, nation = nation_default, level_default = level_default, teams = teams)
     else:
         teams = []
-        cursor_teams = g.conn.execute("SELECT * FROM club ON nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
+        cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
         for result in cursor_teams:
             teams.append(Team(result))
             print result['cname']
