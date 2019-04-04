@@ -239,7 +239,7 @@ def coach():
     if not coach.cid: # The enquired coach is not in db. May be deleted.
         return render_template("notfound.html")
 
-    teams = g.conn.execute("SELECT * FROM team WHERE cid = (%s)", cid)
+    teams = g.conn.execute("SELECT * FROM club WHERE cid = (%s)", cid)
     team = teams.fetchone()
 
     return render_template("coach.html", coach = coach, team = team)
