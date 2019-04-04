@@ -1,1 +1,47 @@
-This is player page.
+<html>
+  <style>
+    body{
+      font-size: 8pt;
+      font-family: arial;
+    }
+    table{
+        border: 1px solid black;
+        cellpadding: "10";
+        border: '0';
+        width: 100px
+        height: 100px
+    }
+  </style>
+  <style type="text/css">
+  a:link,
+  a:visited { COLOR: black; TEXT-DECORATION: none; }
+  a:hover { COLOR: blue; TEXT-DECORATION: underline; }
+  a:active { COLOR: blue; TEXT-DECORATION: none; }
+  </style>
+
+<body>
+
+    <div style="overflow: auto;"><center><font size="5pt">
+    <a href="home">News</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_match">Match</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_team">Team</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_score">Score</a>&nbsp;&nbsp;&nbsp;
+    </font></center></div>
+    <br><br><br>
+
+    <div><center>
+        <a href="home"><font size="2pt">home</a><br><br><br><br>
+        <div style="width:200px;height:220px;border:1px solid #000;">Photo</div>
+        <h2><font size="4pt"> {{player.name}} </h2>
+        <h3><font size="4pt"> Age: {{player.age}} </h3>
+        <h4><font size="4pt"> Nationailty: {{player.nationality}} </h4>
+        <h5><font size="4pt"> Position: {{player.position}} </h5>
+        <h6><font size="4pt"> Club: <a href="{{url_for('team', nation = player.nation, level = player.level, cname = player.cname )}}">{{player.cname}}</a> </h6>
+        <h7><font size="4pt"> Join Since: {{player.since}} </h7>
+        <h8><font size="4pt"> Price(million£): {{player.price}} </h8>
+        <h9><font size="4pt"> Height: {{player.age}} </h9>
+        <h10><font size="4pt"> Foot: {{player.foot}} </h10>
+    </center></div>
+
+</body>
+</html>
