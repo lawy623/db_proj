@@ -289,20 +289,20 @@ def match():
 
     ## Scores
     home_scores = []
-    cursor_home_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 1", mid, match.host)
+    cursor_home_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 0", mid, match.host)
     for result in cursor_home_scores:
         home_scores.append(result)
     home_own_scores = []
-    cursor_home_own_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 0", mid, match.host)
+    cursor_home_own_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 1", mid, match.host)
     for result in cursor_home_own_scores:
         home_own_scores.append(result)
 
     guest_scores = []
-    cursor_guest_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 1", mid, match.guest)
+    cursor_guest_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 0", mid, match.guest)
     for result in cursor_guest_scores:
         guest_scores.append(result)
     guest_own_scores = []
-    cursor_guest_own_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 0", mid, match.guest)
+    cursor_guest_own_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 1", mid, match.guest)
     for result in cursor_guest_own_scores:
         guest_own_scores.append(result)
 
