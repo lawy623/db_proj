@@ -36,16 +36,16 @@
             <h1><font size="5pt"> Stadium: {{stadium}}</h1>
             <div>
                 <div style="float: left;width:40%;"><font size="6pt">
-                    <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br>
+                    <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br><br>
                     {% for m in home_scores %}
-                        <h>({{m.number}}){{m.name}}&nbsp x{{m.goal_num}}</h><br>
+                        <h><font size="5pt">({{m.number}}){{m.name}}&nbsp x{{m.goal_num}}</h><br>
                     {% endfor %}
                 </div>
-                <div style="float: left;width:20%;"><font size="6pt">&nbsp;&nbsp; {{num_home_scores}} : {{num_guest_scores}} &nbsp;&nbsp;</div>
+                <div style="float: left;width:20%;"><font size="6pt"> {{num_home_scores}} &nbsp; : &nbsp; {{num_guest_scores}}</div>
                 <div style="float: left;width:40%;"><font size="6pt">
-                    <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br>
+                    <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br><br>
                     {% for m in guest_scores %}
-                        <h>({{m.number}}){{m.name}}x{{m.goal_num}}</h><br>
+                        <h><font size="5pt">({{m.number}}){{m.name}}&nbsp; x{{m.goal_num}}</h><br>
                     {% endfor %}
                 </div>
             </div>
