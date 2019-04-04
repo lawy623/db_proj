@@ -1,0 +1,47 @@
+<html>
+  <style>
+    body{
+      font-size: 8pt;
+      font-family: arial;
+    }
+    table{
+        border: 1px solid black;
+        cellpadding: "10";
+        border: '0';
+        width: 60%
+        border-left: 0px;
+    }
+  </style>
+  <style type="text/css">
+  a:link,
+  a:visited { COLOR: black; TEXT-DECORATION: none; }
+  a:hover { COLOR: blue; TEXT-DECORATION: underline; }
+  a:active { COLOR: blue; TEXT-DECORATION: none; }
+  </style>
+
+<body>
+
+    <div style="overflow: auto;"><center><font size="5pt">
+    <a href="home">News</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_match">Match</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_team">Team</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_score">Score</a>&nbsp;&nbsp;&nbsp;
+    </font></center></div>
+    <br><br><br><br>
+
+    <a href="home"><center><font size="2pt">home</center></a><br><br><br><br>
+    <div>
+        {% for s in scores %}
+            <table>
+            <tr>
+                <td><td align="left" width="80%"> <a href="{{url_for('team', nation = nation, level = level, cname = s.cname )}}">{{s.cname}}</a></td>
+                <td><td align="left" width="80%"> <a href="{{url_for('team', nation = nation, level = level, cname = s.cname, number = s.number )}}">{{s.name}}</a></td>
+                <td><td align="right" width="20%" style="border-left:1px solid black">{{s.goal}}</td>
+            </tr>
+            </table>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
