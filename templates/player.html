@@ -43,7 +43,7 @@
         <h><font size="4.5pt"> Foot: {{player.foot}} </h><br><br>
 
         <br><br><br>
-        {% if score|length > 0 %}
+        {% if any_score > 0 %}
             <h> <font size="6pt"> Scores </h><br><br>
         {% endif %}
         {% for s in scores %}
