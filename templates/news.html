@@ -42,13 +42,13 @@
         </div>
         <div>
             {%- if news.cid -%}
-                <a href="{{url_for('coach', cid = news.cid )}}">"Coach"+coach.name</a>
+                <a href="{{url_for('coach', cid = news.cid )}}">"Coach"+{{coach.name}}</a>&nbsp;&nbsp;&nbsp;
             {%- endif %}
             {%- if news.mid -%}
-                <a href="{{url_for('match', mid = news.mid )}}">match.host+" vs "+match.guest</a>
+                <a href="{{url_for('match', mid = news.mid )}}">{{match.host}}+" vs "+match.guest</a>&nbsp;&nbsp;&nbsp;
             {%- endif %}
             {%- if news.cname -%}
-                <a href="{{url_for('team', cname = news.cname, nation = news.nation, level = news.level )}}">news.cname</a>
+                <a href="{{url_for('team', cname = news.cname, nation = news.nation, level = news.level )}}">{{news.cname}}</a>&nbsp;&nbsp;&nbsp;
             {%- endif %}
         </div>
     </center></div>

@@ -115,13 +115,13 @@ def news():
 
 @app.route('/coach', methods=['GET','POST'])
 def coach():
-    if request.method == 'POST':
-        cid = request.args.get('cid')
+    cid = request.args.get('cid')
+    if cid :
         print cid
 
         return redirect('/home')
     else:
-        print "now post"
+        return redirect('/')
 
 @app.route('/match')
 def match():
