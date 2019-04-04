@@ -128,9 +128,15 @@ def coach():
     else:
         return redirect('/')
 
-@app.route('/match')
+@app.route('/match', methods=['GET','POST'])
 def match():
-    pass
+    mid = request.args.get('mid')
+    if mid :
+        print mid
+
+        return redirect('/home')
+    else:
+        return redirect('/')
 
 @app.route('/team')
 def team():

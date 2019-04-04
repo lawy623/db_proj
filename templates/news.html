@@ -45,7 +45,7 @@
                 <span><font size="2pt"> Relevant Tags: </span>&nbsp;&nbsp;
             {%- endif %}
             {%- if news.cid -%}
-                <a href="{{url_for('coach', cid = news.cid )}}">Coach {{coach.name}}</a>&nbsp;&nbsp;&nbsp;
+                <a href="{{url_for('coach', cid = news.cid )}}">{{coach.name}}</a>&nbsp;&nbsp;&nbsp;
             {%- endif %}
             {%- if news.mid -%}
                 <a href="{{url_for('match', mid = news.mid )}}">{{match.host}} vs {{match.guest}}</a>&nbsp;&nbsp;&nbsp;
