@@ -160,7 +160,7 @@ def home_match():
     for result in cursor_leagues:
         leagues.append(League(result))
 
-    if not nation and not level:
+    if not nation and not level: # dafault case
         nation_default = leagues[0].nation
         level_default = leagues[0].level
         matches = []
@@ -187,7 +187,7 @@ def home_team():
     for result in cursor_leagues:
         leagues.append(League(result))
 
-    if not nation and not level:
+    if not nation and not level: # dafault case
         nation_default = leagues[0].nation
         level_default = leagues[0].level
         teams = []
@@ -236,6 +236,8 @@ def coach():
     cid = request.args.get('cid')
     coaches = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", cid)
     coach = coaches.fetchone()
+    if not coach.cid: # The enquired coach is not in db. May be deleted.
+        return render_template("notfound.html")
 
     return render_template("coach.html", coach = coach)
 
@@ -254,12 +256,26 @@ def team():
     cname = request.args.get('cname')
     nation = request.args.get('nation')
     level = request.args.get('level')
-    pass
+    teams = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s) AND level = (%s)", cname, nation, level)
+    team = teams.fetchone()
+    if not team.cname: # The enquired player is not in db. May be deleted.
+        return render_template("notfound.html")
+
+    return render_template("team.html", team = team)
 
 
 @app.route('/player')
 def player():
-    pass
+    number = request.args.get('number')
+    cname = request.args.get('cname')
+    nation = request.args.get('nation')
+    level = request.args.get('level')
+    players = g.conn.execute("SELECT * FROM player WHERE number = (%s) AND cname = (%s) AND nation = (%s) AND level = (%s)", number, cname, nation, level)
+    player = players.fetchone()
+    if not player.number: # The enquired player is not in db. May be deleted.
+        return render_template("notfound.html")
+
+    return render_template("player.html", player = player)
 
 
 # Example of adding new data to the database
