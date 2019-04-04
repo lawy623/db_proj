@@ -268,13 +268,22 @@ def match():
     cursor_home_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s)", mid, match.host)
     for result in cursor_home_scores:
         home_scores.append(result)
+    num_home_scores = 0
+    for s in home_scores:
+        num_home_scores += s.goal_num
 
     guest_scores = []
     cursor_guest_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s)", mid, match.guest)
     for result in cursor_guest_scores:
         guest_scores.append(result)
+    num_guest_scores = 0
+    for s in guest_scores:
+        num_guest_scores += s.goal_num
+    ## stadium
+    cursor_stadium = g.conn.execute("SELECT stadium FROM club WHERE cname = (%) AND nation = (%s) AND level = (%s)", match.host, match.nation, match.level)
+    stadium = cursor_stadium.fetchone()
 
-    return render_template("match.html", match = match, home_scores = home_scores, guest_scores = guest_scores)
+    return render_template("match.html", match = match, home_scores = home_scores, guest_scores = guest_scores, stadium = stadium, num_home_scores = num_home_scores, num_guest_scores = num_guest_scores)
 
 @app.route('/team')
 def team():

@@ -36,6 +36,10 @@
         <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a>
     </center></div>
 
+    <h> Stadium: {{stadium}}</h>
+    <h> Date: {{match.date}}</h>
+    <h> Time: {{match.time}}</h>
+    <h> Result: {{num_home_scores}}:{{num_guest_scores}}</h>
     {% for m in home_scores %}
         <h> {{m.number}} </h>
         <h> {{m.name}} </h>
