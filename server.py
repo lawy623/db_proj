@@ -269,7 +269,7 @@ def match():
     for result in cursor_home_scores:
         home_scores.append(result)
 
-    guest_cores = []
+    guest_scores = []
     cursor_guest_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s)", mid, match.guest)
     for result in cursor_guest_scores:
         guest_scores.append(result)
