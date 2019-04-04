@@ -41,13 +41,13 @@
             {% endfor %}
         </div>
 
-        <div id="Teams" style="width:40%;height:100%;float:left;"><font size="2pt">
+        <div id="Teams" style="width:25%;height:100%;float:left;"><font size="2pt">
             <h> <font size="6pt"> Leading Board </h><br><br>
                 {% for s in scores %}
                     <table>
                     <tr>
-                        <td><td align="center" width="20%" style="border-left:1px solid black"> <a href="{{url_for('player', nation = nation, level = level, cname = s.cname, number = s.number )}}">{{s.name}}</a></td>
-                        <td><td align="center" width="20%"> <a href="{{url_for('team', nation = nation, level = level, cname = s.cname )}}">{{s.cname}}</a></td>
+                        <td><td align="center" width="40%"> <a href="{{url_for('player', nation = nation, level = level, cname = s.cname, number = s.number )}}">{{s.name}}</a></td>
+                        <td><td align="center" width="40%" style="border-left:1px solid black"> <a href="{{url_for('team', nation = nation, level = level, cname = s.cname )}}">{{s.cname}}</a></td>
                         <td><td align="center" width="20%" style="border-left:1px solid black">{{s.goal}}</td>
                     </tr>
                     </table>
