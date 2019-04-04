@@ -131,7 +131,7 @@ def home_match():
     if not nation and not level:
 
 
-        return render_template("home_match.hmtl", leagues = leagues, ind = 0, teams = teams)
+        return render_template("home_match.html", leagues = leagues, ind = 0, teams = teams)
     else:
         cursor_teams = g.conn.execute("SELECT * FROM league L JOIN club C ON L.nation = C.nation AND L.level = C.level ORDER BY L.nation, L.level, C.rank")
 
@@ -154,7 +154,7 @@ def home_team():
             teams.append(Team(result))
             print result['cname']
 
-        return render_template("home_team.hmtl", leagues = leagues, nation = nation_default, level_default = level_default, teams = teams)
+        return render_template("home_team.html", leagues = leagues, nation = nation_default, level_default = level_default, teams = teams)
     else:
         teams = []
         cursor_teams = g.conn.execute("SELECT * FROM club WHERE nation = (%s) AND level = (%s) ORDER BY rank ASC", nation, level)
@@ -162,7 +162,7 @@ def home_team():
             teams.append(Team(result))
             print result['cname']
 
-        return render_template("home_team.hmtl", leagues = leagues, nation = nation, level_default = level, teams = teams)
+        return render_template("home_team.html", leagues = leagues, nation = nation, level_default = level, teams = teams)
 
 
 @app.route('/home_score')
