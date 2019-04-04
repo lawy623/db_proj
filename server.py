@@ -116,7 +116,7 @@ def news():
     nid = request.args.get('nid')
     cursor = g.conn.execute("SELECT * FROM news WHERE nid = (%s)", nid)
     result = cursor.fetchone()
-    if !result.nid:
+    if not result.nid:
         return render_template("notfound.html")
 
     match = ""
