@@ -41,7 +41,7 @@
             <p><font size="3pt">{{news.content}}</p>
         </div>
         <div>
-            {%- if news.cid || news.mid || news.cname  -%}
+            {%- if news.cid or news.mid or news.cname  -%}
                 <h3><font size="2pt"> Relevant Tags </h3>
             {%- endif %}
             {%- if news.cid -%}
