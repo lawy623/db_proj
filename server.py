@@ -261,6 +261,9 @@ def team():
     if not team.cname: # The enquired player is not in db. May be deleted.
         return render_template("notfound.html")
 
+    # league
+    leagues = g.conn.execute("SELECT * FROM league WHERE nation = (%s) AND level = (%s)", nation, level)
+    league = leagues.fetchone()
     # matches of the team:
     matches = []
     cursor_matches = g.conn.execute("SELECT * FROM match WHERE host = (%s) OR guest = (%s) AND nation = (%s) AND level = (%s) ORDER BY date, time", cname, cname, nation, level)
