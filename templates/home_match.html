@@ -46,7 +46,7 @@
             {% for m in matches %}
                 <table>
                 <tr>
-                    <td><td align="left" width="15%">{{m.date}}</td>
+                    <td><td align="left" width="20%">{{m.date}}</td>
                     <td><td align="left" width="15%" style="border-left:1px solid black">{{m.time}}</td>
                     <td><td align="left" width="100%" style="border-left:1px solid black">
                         <a href="{{url_for('team', nation = m.nation, level = m.level, cname = m.host )}}">{{m.host}}</a>
