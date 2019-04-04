@@ -280,7 +280,7 @@ def match():
     for s in guest_scores:
         num_guest_scores += s.goal_num
     ## stadium
-    cursor_stadium = g.conn.execute("SELECT stadium FROM club WHERE cname = (%s AND nation = (%s) AND level = (%s)", match.host, match.nation, match.level)
+    cursor_stadium = g.conn.execute("SELECT stadium FROM club WHERE cname = (%s) AND nation = (%s) AND level = (%s)", match.host, match.nation, match.level)
     stadium = cursor_stadium.fetchone()
 
     return render_template("match.html", match = match, home_scores = home_scores, guest_scores = guest_scores, stadium = stadium, num_home_scores = num_home_scores, num_guest_scores = num_guest_scores)
