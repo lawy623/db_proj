@@ -62,7 +62,7 @@
     </div>
     <div id="Players" style="overflow: auto;float:left;width:60%;"><font size="2pt">
         <h> <font size="6pt"> Players </h><br><br>
-            <table style="width:70%">
+            <table style="width:90%">
             <tr>
                 <td>Number</td>
                 <td>Name</td>
@@ -86,7 +86,8 @@
             </tr>
         {% endfor %}
             </table>
-
+        <h> <font size="6pt"> Coach </h><br><br>
+            <a href="{{url_for('coach', cid = coach.cname )}}">{{coach.name}}</a>
     </div>
 
 </body>
