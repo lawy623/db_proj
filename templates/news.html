@@ -42,7 +42,7 @@
         </div>
         <div><left>
             {%- if news.cid or news.mid or news.cname  -%}
-                <span><font size="2pt"> Relevant Tags: </span>
+                <span><font size="2pt"> Relevant Tags: </span>&nbsp;&nbsp;
             {%- endif %}
             {%- if news.cid -%}
                 <a href="{{url_for('coach', cid = news.cid )}}">Coach {{coach.name}}</a>&nbsp;&nbsp;&nbsp;
