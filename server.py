@@ -258,11 +258,23 @@ def coach():
 @app.route('/match')
 def match():
     mid = request.args.get('mid')
-    if mid :
-        return redirect('/home')
-    else:
-        return redirect('/')
+    matches = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", mid)
+    match = matches.fetchone()
+    if not match.cname: # The enquired match is not in db. May be deleted.
+        return render_template("notfound.html")
 
+    ## Scores
+    home_scores = []
+    cursor_home_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s)", mid, match.host)
+    for result in cursor_home_scores:
+        home_scores.append(result)
+
+    guest_cores = []
+    cursor_guest_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s)", mid, match.guest)
+    for result in cursor_guest_scores:
+        guest_scores.append(result)
+
+    return render_template("match.html", match = match, home_scores = home_scores, guest_scores = guest_scores)
 
 @app.route('/team')
 def team():

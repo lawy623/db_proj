@@ -1,1 +1,40 @@
-This is match page.
+<html>
+  <style>
+    body{
+      font-size: 8pt;
+      font-family: arial;
+    }
+    table{
+        border: 1px solid black;
+        cellpadding: "10";
+        border: '0';
+        width: 100px
+        height: 100px
+    }
+  </style>
+  <style type="text/css">
+  a:link,
+  a:visited { COLOR: black; TEXT-DECORATION: none; }
+  a:hover { COLOR: blue; TEXT-DECORATION: underline; }
+  a:active { COLOR: blue; TEXT-DECORATION: none; }
+  </style>
+
+<body>
+
+    <div style="overflow: auto;"><center><font size="5pt">
+    <a href="home">News</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_match">Match</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_team">Team</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_score">Score</a>&nbsp;&nbsp;&nbsp;
+    </font></center></div>
+    <br><br><br>
+
+    <div><center>
+        <a href="home"><font size="2pt">home</a><br><br><br><br>
+        <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a>
+        &nbsp;&nbsp;&nbsp; vs &nbsp;&nbsp;&nbsp;
+        <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a>
+    </center></div>
+
+</body>
+</html>
