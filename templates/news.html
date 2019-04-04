@@ -42,13 +42,13 @@
         </div>
         <div>
             {%- if news.cid or news.mid or news.cname  -%}
-                <h3><font size="2pt"> Relevant Tags </h3>
+                <span><font size="2pt"> Relevant Tags </span>
             {%- endif %}
             {%- if news.cid -%}
-                <a href="{{url_for('coach', cid = news.cid )}}">Coach+{{coach.name}}</a>&nbsp;&nbsp;&nbsp;
+                <a href="{{url_for('coach', cid = news.cid )}}">Coach {{coach.name}}</a>&nbsp;&nbsp;&nbsp;
             {%- endif %}
             {%- if news.mid -%}
-                <a href="{{url_for('match', mid = news.mid )}}">{{match.host}}+ vs +{{match.guest}}</a>&nbsp;&nbsp;&nbsp;
+                <a href="{{url_for('match', mid = news.mid )}}">{{match.host}} vs {{match.guest}}</a>&nbsp;&nbsp;&nbsp;
             {%- endif %}
             {%- if news.cname -%}
                 <a href="{{url_for('team', cname = news.cname, nation = news.nation, level = news.level )}}">{{news.cname}}</a>&nbsp;&nbsp;&nbsp;

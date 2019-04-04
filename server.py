@@ -106,8 +106,10 @@ def news():
     team = ""
     if result.mid:
         match = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", result.mid)
+        print match['host']
     if result.cid:
         coach = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", result.cid)
+        print coach['name']
     if result.cname:
         team = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s) AND level = (%s)", result.cname, result.nation, result.level)
     return render_template("news.html", news = result, match = match, coach = coach, team = team)
