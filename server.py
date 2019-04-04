@@ -101,13 +101,16 @@ def news():
     cursor = g.conn.execute("SELECT * FROM news WHERE nid = (%s)", nid)
     result = cursor.fetchone()
 
+    match = ""
+    coach = ""
+    team = ""
     if result.mid:
-        match_ = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", result.mid)
+        match = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", result.mid)
     if result.cid:
-        coach_ = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", result.cid)
+        coach = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", result.cid)
     if result.cname:
-        team_ = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s) AND level = (%s)", result.cname, result.nation, result.level)
-    return render_template("news.html", news = result, match = match_, coach = coach_, team = team_)
+        team = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s) AND level = (%s)", result.cname, result.nation, result.level)
+    return render_template("news.html", news = result, match = match, coach = coach, team = team)
 
 
 @app.route('/coach', methods=['GET','POST'])
