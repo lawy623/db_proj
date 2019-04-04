@@ -36,5 +36,17 @@
         <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a>
     </center></div>
 
+    {% for m in home_scores %}
+        <h> {{m.number}} </h>
+        <h> {{m.name}} </h>
+        <h> {{m.goal_num}} </h>
+    {% endfor %}
+
+    {% for m in hguest_scores %}
+        <h> {{m.number}} </h>
+        <h> {{m.name}} </h>
+        <h> {{m.goal_num}} </h>
+    {% endfor %}
+
 </body>
 </html>
