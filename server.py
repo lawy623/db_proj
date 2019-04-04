@@ -134,6 +134,16 @@ class Match:
         self.nation = result['nation']
         self.level = result['level']
 
+class Score:
+    def __init__(self, result):
+        self.mid = result['mid']
+        self.date = result['date']
+        self.time = result['time']
+        self.host = result['host']
+        self.guest = result['guest']
+        self.goal_num = result['goal_num']
+        self.nation = result['nation']
+        self.level = result['level']
 
 @app.route('/')
 def main():
@@ -294,8 +304,13 @@ def player():
     player = players.fetchone()
     if not player.number: # The enquired player is not in db. May be deleted.
         return render_template("notfound.html")
+    ## Scores
+    scores = []
+    cursor_scores = g.conn.execute("SELECT * FROM score S JOIN match M on S.mid = M.mid WHERE S.number = (%s) AND S.cname = (%s) AND S.nation = (%s) AND S.level = (%s)", number, cname, nation, level)
+    for result in cursor_scores:
+        scores.append(Score(result))
 
-    return render_template("player.html", player = player)
+    return render_template("player.html", player = player, scores = scores)
 
 
 # Example of adding new data to the database
