@@ -34,9 +34,9 @@
         <div id="leagues" style="width:40%;height:100%;float:left;"><font size="4pt">
             {% for l in leagues %}
                 {% if l.nation == nation and l.level == level %}
-                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}" style="color:#FF0000;">{{l.name}}</a><br><br><br>
+                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_score', nation = l.nation, level = l.level )}}" style="color:#FF0000;">{{l.name}}</a><br><br><br>
                 {% else %}
-                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_team', nation = l.nation, level = l.level )}}">{{l.name}}</a><br><br><br>
+                    &nbsp;&nbsp;&nbsp;<a href="{{url_for('home_score', nation = l.nation, level = l.level )}}">{{l.name}}</a><br><br><br>
                 {% endif %}
             {% endfor %}
         </div>
@@ -46,8 +46,8 @@
                 {% for s in scores %}
                     <table>
                     <tr>
-                        <td><td align="left" width="80%"> <a href="{{url_for('team', nation = nation, level = level, cname = s.cname )}}">{{s.cname}}</a></td>
-                        <td><td align="left" width="80%"> <a href="{{url_for('player', nation = nation, level = level, cname = s.cname, number = s.number )}}">{{s.name}}</a></td>
+                        <td><td align="left" width="40%"> <a href="{{url_for('team', nation = nation, level = level, cname = s.cname )}}">{{s.cname}}</a></td>
+                        <td><td align="left" width="40%" style="border-left:1px solid black"> <a href="{{url_for('player', nation = nation, level = level, cname = s.cname, number = s.number )}}">{{s.name}}</a></td>
                         <td><td align="right" width="20%" style="border-left:1px solid black">{{s.goal}}</td>
                     </tr>
                     </table>
