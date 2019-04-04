@@ -260,7 +260,7 @@ def match():
     mid = request.args.get('mid')
     matches = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", mid)
     match = matches.fetchone()
-    if not match.cname: # The enquired match is not in db. May be deleted.
+    if not match.mid: # The enquired match is not in db. May be deleted.
         return render_template("notfound.html")
 
     ## Scores
