@@ -175,7 +175,7 @@ def home_match():
         for result in cursor_matches:
             matches.append(Match(result))
 
-        return render_template("home_match.html", leagues = leagues, nation = nation, level = level, matches = matches)
+        return render_template("home_match.html", leagues = leagues, nation = nation, level = int(level), matches = matches)
 
 @app.route('/home_team')
 def home_team():
