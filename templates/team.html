@@ -1,1 +1,43 @@
-This is team page.
+<html>
+  <style>
+    body{
+      font-size: 8pt;
+      font-family: arial;
+    }
+    table{
+        border: 1px solid black;
+        cellpadding: "10";
+        border: '0';
+        width: 100px
+        height: 100px
+    }
+  </style>
+  <style type="text/css">
+  a:link,
+  a:visited { COLOR: black; TEXT-DECORATION: none; }
+  a:hover { COLOR: blue; TEXT-DECORATION: underline; }
+  a:active { COLOR: blue; TEXT-DECORATION: none; }
+  </style>
+
+<body>
+
+    <div style="overflow: auto;"><center><font size="5pt">
+    <a href="home">News</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_match">Match</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_team">Team</a>&nbsp;&nbsp;&nbsp;
+    <a href="home_score">Score</a>&nbsp;&nbsp;&nbsp;
+    </font></center></div>
+    <br><br><br>
+
+    <div><center>
+        <a href="home"><font size="2pt">home</a><br><br><br><br>
+        <div style="width:200px;height:220px;border:1px solid #000;">Log</div>
+        <h1><font size="4pt"> {{team.cname}}
+        <h2><font size="4pt"> <a href="{{url_for('home_team', nation = league.nation, level = league.level )}}">{{league.name}}</a> </h2>
+        <h3>Current Rank: {{team.cname}}</h3>
+        <h4><font size="4pt"> City: {{team.city}} &nbsp; Statium: {{team.statium}} </h4>
+        <h5><font size="4pt"> Sponsor: {{team.sponsor}} </h5>
+    </center></div>
+
+</body>
+</html>

@@ -261,7 +261,10 @@ def team():
     if not team.cname: # The enquired player is not in db. May be deleted.
         return render_template("notfound.html")
 
-    return render_template("team.html", team = team)
+    leagues = g.conn.execute("SELECT * FROM league WHERE nation = (%s) AND level = (%s)", nation, level)
+    league = leagues.fetchone()
+
+    return render_template("team.html", team = team, league = league)
 
 
 @app.route('/player')
