@@ -107,32 +107,35 @@ def news():
     if result.mid:
         matches = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", result.mid)
         match = matches.fetchone()
-        print match.host
     if result.cid:
         coaches = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", result.cid)
         coach = coaches.fetchone()
-        print coach.name
     if result.cname:
         teames = g.conn.execute("SELECT * FROM club WHERE cname = (%s) AND nation = (%s) AND level = (%s)", result.cname, result.nation, result.level)
         team = teames.fetchone()
     return render_template("news.html", news = result, match = match, coach = coach, team = team)
 
+class Coach:
+    def __init__(self, result):
+        self.cid = result['cid']
+        self.name = result['name']
+        self.age = result['age']
+        self.nationality = result['nationality']
 
 @app.route('/coach', methods=['GET','POST'])
 def coach():
     cid = request.args.get('cid')
-    if cid :
-        print cid
+    coaches = g.conn.execute("SELECT * FROM coach WHERE cid = (%s)", cid)
+    coach = coaches.fetchone()
 
-        return redirect('/home')
-    else:
-        return redirect('/')
+    return render_template("coach.html", coach = coach)
+
 
 @app.route('/match', methods=['GET','POST'])
 def match():
     mid = request.args.get('mid')
     if mid :
-        print mid
+
 
         return redirect('/home')
     else:
