@@ -203,7 +203,7 @@ def home_team():
             teams.append(Team(result))
         print nation
         print level
-        return render_template("home_team.html", leagues = leagues, nation = nation, level = level, teams = teams)
+        return render_template("home_team.html", leagues = leagues, nation = nation, level = int(level), teams = teams)
 
 
 @app.route('/home_score')
