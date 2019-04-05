@@ -110,19 +110,23 @@ class Team:
         self.level = result['level']
 
 class Player:
+    def case_NULL(self, value):
+        if value = '':
+            value = NULL
+
     def __init__(self, result):
-        self.number = result['number']
-        self.age = result['age']
-        self.position = result['position']
-        self.price = result['price']
-        self.height = result['height']
-        self.nationality = result['nationality']
-        self.name = result['name']
-        self.since = result['since']
-        self.cname = result['cname']
-        self.nation = result['nation']
-        self.level = result['level']
-        self.foot = result['foot']
+        self.number = self.case_NULL(result['number'])
+        self.age = self.case_NULLresult['age'])
+        self.position = self.case_NULLresult['position'])
+        self.price = self.case_NULLresult['price'])
+        self.height = rself.case_NULLesult['height'])
+        self.nationality = self.case_NULLresult['nationality'])
+        self.name = self.case_NULLresult['name'])
+        self.since = self.case_NULLresult['since'])
+        self.cname = self.case_NULLresult['cname'])
+        self.nation = self.case_NULLresult['nation'])
+        self.level = self.case_NULLresult['level'])
+        self.foot = self.case_NULLresult['foot'])
 
 class Match:
     def __init__(self, result):
