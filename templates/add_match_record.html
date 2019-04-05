@@ -32,7 +32,7 @@
     <div><center>
         <a href="home"><font size="2pt">home</a><br><br><br><br><br><br><br><br>
             <div>
-                <div style="float: left;width:40%;"><font size="6pt">
+                <div style="float: left;width:30%;"><font size="6pt">
                     <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br><br>
                     <table>
                     {% for m in home_players %}
@@ -42,8 +42,15 @@
                     </tr>
                     {% endfor %}
                     </table>
+
                 </div>
-                <div style="float: left;width:40%;"><font size="6pt">
+                <div style="float: left;width:20%;"><font size="6pt">
+                    <h><font size ="3pt"> Who Scores?<h><br>
+                        {% for i in range(5) %}
+                            <h><font size ="2pt">test<h><br>
+                        {% endfor %}
+                </div>
+                <div style="float: left;width:30%;"><font size="6pt">
                     <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br><br>
                     <table>
                     {% for m in guest_players %}
@@ -53,6 +60,12 @@
                     </tr>
                     {% endfor %}
                     </table>
+                </div>
+                <div style="float: left;width:20%;"><font size="6pt">
+                    <h><font size ="3pt"> Who Scores?<h><br>
+                        {% for i in range(5) %}
+                            <h><font size ="2pt">test<h><br>
+                        {% endfor %}
                 </div>
             </div>
     </center></div>
