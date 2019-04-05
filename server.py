@@ -426,7 +426,7 @@ def add_player():
     g.conn.execute(sql_format)
     return redirect(url_for('team', nation = player.nation, level = player.level, cname = player.cname))
 
-@app.route('/add_record')
+@app.route('/add_record', methods=['POST'])
 def add_record():
     mid = request.form['mid']
     return redirect(url_for('match', mid = mid))

@@ -63,7 +63,7 @@
                         <input type="number" name="home_score{{i}}" list="players" />
                             <datalist id="players">
                                 {% for m in home_players %}
-                                    <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
+                                    <option value="{{m.number}}">{{m.name}}</option>
                                 {% endfor %}
                             </datalist>
                         <input type="number" name="home_goal_number{{i}}" value="1">
@@ -90,7 +90,7 @@
                         <input type="number" name="guest_score{{i}}" list="players" />
                             <datalist id="players">
                                 {% for m in home_players %}
-                                    <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
+                                    <option value="{{m.number}}">{{m.name}}</option>
                                 {% endfor %}
                             </datalist>
                         <input type="number" name="guest_goal_number{{i}}" value="1">
