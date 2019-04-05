@@ -31,9 +31,6 @@
 
     <div><center>
         <a href="home"><font size="2pt">home</a><br><br><br><br><br><br><br><br>
-            <h2><font size="5pt"> Date: {{match.date}}</h2>
-            <h3><font size="5pt"> Time: {{match.time}}</h3>
-            <h1><font size="5pt"> Stadium: {{stadium}}</h1>
             <div>
                 <div style="float: left;width:40%;"><font size="6pt">
                     <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br><br>
@@ -49,7 +46,7 @@
                 <div style="float: left;width:40%;"><font size="6pt">
                     <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br><br>
                     <table>
-                    {% for m in home_players %}
+                    {% for m in guest_players %}
                     <tr>
                         <td><font size="3pt">{{m.number}}</td>
                         <td><font size="3pt">{{m.name}}</td>
