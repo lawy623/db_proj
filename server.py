@@ -111,7 +111,7 @@ class Team:
 
 class Player:
     def case_NULL(self, value):
-        if value = '':
+        if value == '':
             value = NULL
 
     def __init__(self, result):
