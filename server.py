@@ -116,17 +116,17 @@ class Player:
 
     def __init__(self, result):
         self.number = self.case_NULL(result['number'])
-        self.age = self.case_NULLresult['age'])
-        self.position = self.case_NULLresult['position'])
-        self.price = self.case_NULLresult['price'])
-        self.height = rself.case_NULLesult['height'])
-        self.nationality = self.case_NULLresult['nationality'])
-        self.name = self.case_NULLresult['name'])
-        self.since = self.case_NULLresult['since'])
-        self.cname = self.case_NULLresult['cname'])
-        self.nation = self.case_NULLresult['nation'])
-        self.level = self.case_NULLresult['level'])
-        self.foot = self.case_NULLresult['foot'])
+        self.age = self.case_NULL(result['age'])
+        self.position = self.case_NULL(result['position'])
+        self.price = self.case_NULL(result['price'])
+        self.height = self.case_NULL(result['height'])
+        self.nationality = self.case_NULL(result['nationality'])
+        self.name = self.case_NULL(result['name'])
+        self.since = self.case_NULL(result['since'])
+        self.cname = self.case_NULL(result['cname'])
+        self.nation = self.case_NULL(result['nation'])
+        self.level = self.case_NULL(result['level'])
+        self.foot = self.case_NULL(result['foot'])
 
 class Match:
     def __init__(self, result):
