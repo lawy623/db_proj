@@ -55,19 +55,19 @@
 
             <div style="float: left;width:25%;"><font size="6pt">
                 <h><font size ="3pt"> Who Scores?<h><br><br><br>
-                    <div><h>Player</h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <h>Number of Goal</h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div><h>Player</h>&nbsp;&nbsp;&nbsp;
+                         <h>Number</h>&nbsp;&nbsp;
                          <h>own goal?</h></div>
                     {% for i in range(5) %}
                     <div>
-                        <input type="number" name="home_score{{i}}" list="players" />
+                        <input style="width:30%;" type="number" name="home_score{{i}}" list="players">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <datalist id="players">
                                 {% for m in home_players %}
                                     <option value="{{m.number}}">{{m.name}}</option>
                                 {% endfor %}
                             </datalist>
-                        <input type="number" name="home_goal_number{{i}}" value="1">
-                        <input type="number" name="home_own_goal{{i}}" value="0">
+                        <input style="width:10%;" type="number" name="home_goal_number{{i}}" value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input style="width:10%;" type="number" name="home_own_goal{{i}}" value="0">
                     </div><br>
                     {% endfor %}
             </div>
@@ -85,16 +85,19 @@
             </div>
             <div style="float: left;width:25%;"><font size="6pt">
                 <h><font size ="3pt"> Who Scores?<h><br><br><br>
+                    <div><h>Player</h>&nbsp;&nbsp;&nbsp;
+                         <h>Number</h>&nbsp;&nbsp;
+                         <h>own goal?</h></div>
                     {% for i in range(5) %}
                     <div>
-                        <input type="number" name="guest_score{{i}}" list="players" />
+                        <input style="width:30%;" type="number" name="guest_score{{i}}" list="players">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <datalist id="players">
                                 {% for m in home_players %}
                                     <option value="{{m.number}}">{{m.name}}</option>
                                 {% endfor %}
                             </datalist>
-                        <input type="number" name="guest_goal_number{{i}}" value="1">
-                        <input type="number" name="guest_own_goal{{i}}" value="0">
+                        <input style="width:10%;" type="number" name="guest_goal_number{{i}}" value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input style="width:10%;" type="number" name="guest_own_goal{{i}}" value="0">
                     </div><br>
                     {% endfor %}
             </div>
