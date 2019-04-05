@@ -104,6 +104,9 @@
                     <td>Foot</td>
                 </tr>
                 <tr>
+                    <input type="hidden" name="cname" value={{team.cname}} />
+                    <input type="hidden" name="nation" value={{team.nation}} />
+                    <input type="hidden" name="level" value={{team.level}} />
                     <td><input style="width:90%" type="text" name="number"></td>
                     <td><input style="width:90%" type="text" name="name"></td>
                     <td><input style="width:90%" type="number" name="age"></td>
@@ -111,7 +114,7 @@
                     <td><input style="width:90%" type="text" name="nationality"></td>
                     <td><input style="width:90%" type="number" name="since"></td>
                     <td><input style="width:90%" type="number" name="price"></td>
-                    <td><input style="width:90%" type="number" name="height(cm)"></td>
+                    <td><input style="width:90%" type="number" name="height"></td>
                     <td><input style="width:90%" type="text" name="foot"></td>
                 </tr></table><br>
              <input type="submit" value="add"></p>

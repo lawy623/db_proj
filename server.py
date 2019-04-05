@@ -402,7 +402,12 @@ def player():
 
 @app.route('/add_player', methods=['POST'])
 def add_player():
-    name = request.form['name']
+    player = Player(request.form)
+    print player.nation
+    print player.level
+    print player.cname
+    print player.number
+    print player.name
     #g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
     return redirect('/home')
 
