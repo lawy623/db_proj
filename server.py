@@ -111,11 +111,9 @@ class Team:
 
 class Player:
     def cast_NULL(self, value):
-        print value
         if value == '':
-            value = "NULL"
-        print "after change:"
-        print value
+            return "NULL"
+        return value
 
     def __init__(self, result):
         self.number = self.cast_NULL(result['number'])
@@ -409,14 +407,8 @@ def player():
 
 @app.route('/add_player', methods=['POST'])
 def add_player():
-    print request.form['number']
-    print request.form['cname']
-    print request.form['nation']
     player = Player(request.form)
-    print player.number
-    print player.cname
-    print player.nation
-    if player.number is None:
+    if player.number == "NULL":
         return render_template("insert_null.html")
 
     g.conn.execute('INSERT INTO player VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', player.number, player.age, player.position, player.price, player.height, player.nationality, player.name, player.since, player.cname, player.nation, player.level, player.foot)
