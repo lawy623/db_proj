@@ -423,6 +423,7 @@ def add_player():
                             'NULL' if player.nation == 'NULL' else "'"+player.nation+"'",
                             player.level,
                             player.foot)
+    g.conn.execute(sql_format)
     return redirect(url_for('team', nation = player.nation, level = player.level, cname = player.cname))
 
 
