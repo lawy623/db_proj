@@ -409,7 +409,7 @@ def add_player():
     print player.number
     print player.name
     #g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
-    return redirect('/home')
+    return redirect(url_for('team, nation = (%s), level = (%s), cname = (%s)' ,player.nation, player.level, player.cname))
 
 
 
