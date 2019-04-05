@@ -402,6 +402,7 @@ def player():
 
 @app.route('/add_player', methods=['POST'])
 def add_player():
+    print request.form['cname']
     player = Player(request.form)
     print player.nation
     print player.level
