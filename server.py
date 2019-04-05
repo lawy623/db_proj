@@ -411,18 +411,18 @@ def add_player():
     if player.number == "NULL":
         return render_template("insert_null.html")
 
-    # g.conn.execute("INSERT INTO player VALUES ({},{},\'{}\',{},{},\'{}\',\'{}\',{},\'{}\',\'{}\',{},\'{}\')".format(player.number, player.age, player.position, player.price, player.height, player.nationality, player.name, player.since, player.cname, player.nation, player.level, player.foot))
+    # format for the null cases.
     sql = """INSERT INTO player VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11})"""
     sql_format = sql.format(player.number, player.age,
                             'NULL' if player.position == 'NULL' else "'"+player.position+"'",
                             player.price, player.height,
-                            player.nationality,
-                            player.name,
+                            'NULL' if player.nationality == 'NULL' else "'"+player.nationality+"'",
+                            'NULL' if player.name == 'NULL' else "'"+player.name+"'",
                             player.since,
-                            player.cname,
+                            'NULL' if player.cname == 'NULL' else "'"+player.cname+"'",
                             'NULL' if player.nation == 'NULL' else "'"+player.nation+"'",
                             player.level,
-                            player.foot)
+                            'NULL' if player.foot == 'NULL' else "'"+player.foot+"'")
     g.conn.execute(sql_format)
     return redirect(url_for('team', nation = player.nation, level = player.level, cname = player.cname))
 
