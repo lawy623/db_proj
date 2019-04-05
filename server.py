@@ -439,19 +439,19 @@ def add_record():
     #print """Match {0}: {1} vs {2} -- [{3} {4}] """.format(mid, home_cname, guest_cname, nation, level)
 
     # home scores
+    print "home"
     for i in range(5):
         player = request.form['home_score'+str(i)]
         number_score = request.form['home_goal_number'+str(i)]
         own_goal = request.form['home_own_goal'+str(i)]
-        print "home"
         if player != '':
             print """{} x{}({})""".format(player, number_score, own_goal)
     # guest scores
+    print "guest"
     for i in range(5):
         player = request.form['guest_score'+str(i)]
         number_score = request.form['guest_goal_number'+str(i)]
         own_goal = request.form['guest_own_goal'+str(i)]
-        print "guest"
         if player != '':
             print """{} x{}({})""".format(player, number_score, own_goal)
 
