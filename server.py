@@ -113,6 +113,7 @@ class Player:
     def cast_NULL(self, value):
         if value == '':
             value = "NULL"
+
     def __init__(self, result):
         self.number = self.cast_NULL(result['number'])
         self.age = self.cast_NULL(result['age'])
@@ -405,11 +406,14 @@ def player():
 
 @app.route('/add_player', methods=['POST'])
 def add_player():
+    print request.form['number']
+    print request.form['cname']
+    print request.form['nation']
     player = Player(request.form)
     print player.number
     print player.cname
     print player.nation
-    if player.number == "NULL":
+    if player.number == "None":
         return redirect("insert_null")
 
     g.conn.execute('INSERT INTO player VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', player.number, player.age, player.position, player.price, player.height, player.nationality, player.name, player.since, player.cname, player.nation, player.level, player.foot)
