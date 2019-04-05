@@ -111,8 +111,11 @@ class Team:
 
 class Player:
     def cast_NULL(self, value):
+        print value
         if value == '':
             value = "NULL"
+        print "after change:"
+        print value
 
     def __init__(self, result):
         self.number = self.cast_NULL(result['number'])
