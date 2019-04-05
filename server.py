@@ -443,6 +443,7 @@ def add_record():
         player = request.form['home_score'+str(i)]
         number_score = request.form['home_goal_number'+str(i)]
         own_goal = request.form['home_own_goal'+str(i)]
+        print "home"
         if player != '':
             print """{} x{}({})""".format(player, number_score, own_goal)
     # guest scores
@@ -450,6 +451,7 @@ def add_record():
         player = request.form['guest_score'+str(i)]
         number_score = request.form['guest_goal_number'+str(i)]
         own_goal = request.form['guest_own_goal'+str(i)]
+        print "guest"
         if player != '':
             print """{} x{}({})""".format(player, number_score, own_goal)
 
