@@ -115,17 +115,17 @@ class Player:
             value = "NULL"
     def __init__(self, result):
         self.number = self.cast_NULL(result['number'])
-        self.age = result['age']
-        self.position = result['position']
-        self.price = result['price']
-        self.height = result['height']
-        self.nationality = result['nationality']
-        self.name = result['name']
-        self.since = result['since']
-        self.cname = result['cname']
-        self.nation = result['nation']
-        self.level = result['level']
-        self.foot = result['foot']
+        self.age = self.cast_NULL(result['age'])
+        self.position = self.cast_NULL(result['position'])
+        self.price = self.cast_NULL(result['price'])
+        self.height = self.cast_NULL(result['height'])
+        self.nationality = self.cast_NULL(result['nationality'])
+        self.name = self.cast_NULL(result['name'])
+        self.since = self.cast_NULL(result['since'])
+        self.cname = self.cast_NULL(result['cname'])
+        self.nation = self.cast_NULL(result['nation'])
+        self.level = self.cast_NULL(result['level'])
+        self.foot = self.cast_NULL(result['foot'])
 
 class Match:
     def __init__(self, result):
