@@ -288,8 +288,7 @@ def match():
         return render_template("notfound.html")
 
     cursor_score_in_match = g.conn.execute("SELECT * FROM score WHERE mid = (%s)", mid)
-    record = cursor_score_in_match.fetchone()
-    if not record.mid: # no match record in score
+    if cursor_score_in_match.rowcount == 0: # no match record in score
         no_record = 1
     else:
         no_record = 0
