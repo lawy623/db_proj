@@ -29,68 +29,77 @@
     </font></center></div>
     <br><br><br>
 
+    <form method="POST" action="/add_record">
     <div><center>
         <a href="home"><font size="2pt">home</a><br><br><br><br><br><br><br><br>
-            <form method="POST" action="/add_record">
-                <div>
-                    <div style="float: left;width:10%;"><font size="6pt">
-                        <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br><br>
-                        <table>
-                        {% for m in home_players %}
-                        <tr>
-                            <td><font size="3pt">{{m.number}}</td>
-                            <td><font size="3pt">{{m.name}}</td>
-                        </tr>
-                        {% endfor %}
-                        </table>
+        <div>
+            <div style="float: left;width:10%;"><font size="6pt">
+                <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br><br>
+                <table>
+                {% for m in home_players %}
+                <tr>
+                    <td><font size="3pt">{{m.number}}</td>
+                    <td><font size="3pt">{{m.name}}</td>
+                </tr>
+                {% endfor %}
+                </table>
 
-                    </div>
+            </div>
 
-                    <div style="float: left;width:40%;"><font size="6pt">
-                        <h><font size ="3pt"> Who Scores?<h><br><br><br>
-                            {% for i in range(5) %}
-                            <div>
-                                <input type="number" list="players" />
-                                    <datalist id="players">
-                                        {% for m in home_players %}
-                                            <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
-                                        {% endfor %}
-                                    </datalist>
-                            </div>
-                            {% endfor %}
-                    </div>
+            <div style="float: left;width:40%;"><font size="6pt">
+                <h><font size ="3pt"> Who Scores?<h><br><br><br>
+                    <div><h>Player</h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <h>Number of Goal</h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <h>own goal?</h></div>
+                    {% for i in range(5) %}
+                    <div>
+                        <input type="number" name="score{{i}}" list="players" />
+                            <datalist id="players">
+                                {% for m in home_players %}
+                                    <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
+                                {% endfor %}
+                            </datalist>
+                        <input type="number" name="number" value="1">
+                        <input type="number" name="own_goal" value="0">
+                    </div><br>
+                    {% endfor %}
+            </div>
 
-                    <div style="float: left;width:10%;"><font size="6pt">
-                        <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br><br>
-                        <table>
-                        {% for m in guest_players %}
-                        <tr>
-                            <td><font size="3pt">{{m.number}}</td>
-                            <td><font size="3pt">{{m.name}}</td>
-                        </tr>
-                        {% endfor %}
-                        </table>
-                    </div>
-                    <div style="float: left;width:40%;"><font size="6pt">
-                        <h><font size ="3pt"> Who Scores?<h><br><br><br>
-                            {% for i in range(5) %}
-                            <div>
-                                <input type="number" list="players" />
-                                    <datalist id="players">
-                                        {% for m in home_players %}
-                                            <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
-                                        {% endfor %}
-                                    </datalist>
-                            </div>
-                            {% endfor %}
-                    </div>
-                </div>
-                <input type="hidden" name="nation" value= "{{match.nation}}" />
-                <input type="hidden" name="level" value= "{{match.level}}" />
-                <input type="hidden" name="mid" value= "{{match.mid}}" />
-                <input type="submit" value="add">
-            </form>
-    </center></div>
+            <div style="float: left;width:10%;"><font size="6pt">
+                <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br><br>
+                <table>
+                {% for m in guest_players %}
+                <tr>
+                    <td><font size="3pt">{{m.number}}</td>
+                    <td><font size="3pt">{{m.name}}</td>
+                </tr>
+                {% endfor %}
+                </table>
+            </div>
+            <div style="float: left;width:40%;"><font size="6pt">
+                <h><font size ="3pt"> Who Scores?<h><br><br><br>
+                    {% for i in range(5) %}
+                    <div>
+                        <input type="number" name="score{{i}}" list="players" />
+                            <datalist id="players">
+                                {% for m in home_players %}
+                                    <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
+                                {% endfor %}
+                            </datalist>
+                        <input type="number" name="number" value="1">
+                        <input type="number" name="own_goal" value="0">
+                    </div><br>
+                    {% endfor %}
+            </div>
+        </div>
+    </center></div><br><br><br><br><br><br>
+    <div>
+    <input type="hidden" name="nation" value= "{{match.nation}}" />
+    <input type="hidden" name="level" value= "{{match.level}}" />
+    <input type="hidden" name="mid" value= "{{match.mid}}" />
+    <input type="submit" value="add record">
+    </div>
+</form>
 
 </body>
 </html>
