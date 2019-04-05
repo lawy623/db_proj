@@ -445,7 +445,7 @@ def add_record():
         print """{} x{}({})""".formate(player, number_score, own_goal)
     # guest scores
     for i in range(5):
-
+        pass
 
     return redirect(url_for('match', mid = mid))
 
