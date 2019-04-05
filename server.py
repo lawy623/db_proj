@@ -417,7 +417,7 @@ def add_player():
     print player.cname
     print player.nation
     if player.number is None:
-        return redirect("insert_null")
+        return render_template("insert_null.html")
 
     g.conn.execute('INSERT INTO player VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', player.number, player.age, player.position, player.price, player.height, player.nationality, player.name, player.since, player.cname, player.nation, player.level, player.foot)
     return redirect(url_for('team', nation = player.nation, level = player.level, cname = player.cname))
