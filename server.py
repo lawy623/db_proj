@@ -431,7 +431,6 @@ class goal:
         self.number
 @app.route('/add_record', methods=['POST'])
 def add_record():
-    print request.form
     mid = request.form['mid']
     home_cname = request.form['home']
     guest_cname = request.form['guest']
@@ -450,7 +449,9 @@ def add_record():
 
     # guest scores
     print "guest"
+    print request.form['guest_score0']
     for i in range(5):
+        print i
         player = request.form['guest_score'+str(i)]
         number_score = request.form['guest_goal_number'+str(i)]
         own_goal = request.form['guest_own_goal'+str(i)]
