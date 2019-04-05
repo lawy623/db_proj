@@ -348,7 +348,7 @@ def add_match_record():
     cursor_guest_players = g.conn.execute("SELECT name, number FROM player WHERE nation = (%s) AND level = (%s) AND cname = (%s)", match.nation, match.level, match.guest);
     for result in cursor_guest_players:
         guest_players.append(result)
-        print result.numer
+        print result.number
 
     return render_template("add_match_record.html", match = match, home_players = home_players, guest_players = guest_players)
 
