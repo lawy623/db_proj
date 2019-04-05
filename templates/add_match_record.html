@@ -55,12 +55,13 @@
 
             <div style="float: left;width:25%;"><font size="6pt">
                 <h><font size ="3pt"> Who Scores?<h><br><br><br>
-                    <div><h>Player</h>&nbsp;&nbsp;&nbsp;
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;
+                         <h>Player</h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <h>Number</h>&nbsp;&nbsp;
-                         <h>own goal?</h></div>
+                         <h>Own_goal?</h></div>
                     {% for i in range(5) %}
                     <div>
-                        <input style="width:30%;" type="number" name="home_score{{i}}" list="players">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input style="width:20%;" type="number" name="home_score{{i}}" list="players">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <datalist id="players">
                                 {% for m in home_players %}
                                     <option value="{{m.number}}">{{m.name}}</option>
@@ -85,12 +86,13 @@
             </div>
             <div style="float: left;width:25%;"><font size="6pt">
                 <h><font size ="3pt"> Who Scores?<h><br><br><br>
-                    <div><h>Player</h>&nbsp;&nbsp;&nbsp;
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;
+                         <h>Player</h>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          <h>Number</h>&nbsp;&nbsp;
-                         <h>own goal?</h></div>
+                         <h>Own_goal?</h></div>
                     {% for i in range(5) %}
                     <div>
-                        <input style="width:30%;" type="number" name="guest_score{{i}}" list="players">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input style="width:20%;" type="number" name="guest_score{{i}}" list="players">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <datalist id="players">
                                 {% for m in home_players %}
                                     <option value="{{m.number}}">{{m.name}}</option>
