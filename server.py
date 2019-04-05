@@ -426,9 +426,27 @@ def add_player():
     g.conn.execute(sql_format)
     return redirect(url_for('team', nation = player.nation, level = player.level, cname = player.cname))
 
+class goal:
+    def __init__(self, result):
+        self.number
 @app.route('/add_record', methods=['POST'])
 def add_record():
     mid = request.form['mid']
+    home_cname = request.form['home']
+    guest_cname = request.form['guest']
+    nation = request.form['nation']
+    level = request.form['level']
+    print """Match {0}: {1} vs {2} -- [{3} {4}] """.format(mid, home_cname, guest_cname, nation, level)
+    # home scores
+    for i in range(5):
+        player = request.form['home_score'+i]
+        number_score = request.form['home_goal_number'+i]
+        own_goal = request.form['home_own_goal'+i]
+        print """{} x{}({})""".formate(player, number_score, own_goal)
+    # guest scores
+    for i in range(5):
+
+
     return redirect(url_for('match', mid = mid))
 
 

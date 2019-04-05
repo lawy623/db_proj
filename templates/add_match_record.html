@@ -35,6 +35,8 @@
             <div>
                 <input type="hidden" name="nation" value= "{{match.nation}}" />
                 <input type="hidden" name="level" value= "{{match.level}}" />
+                <input type="hidden" name="home" value= "{{match.host}}" />
+                <input type="hidden" name="guest" value= "{{match.guest}}" />
                 <input type="hidden" name="mid" value= "{{match.mid}}" />
                 <input type="submit" value="add record">
             </div>
@@ -94,7 +96,7 @@
                     <div>
                         <input style="width:20%;" type="number" name="guest_score{{i}}" list="players">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <datalist id="players">
-                                {% for m in home_players %}
+                                {% for m in guest_players %}
                                     <option value="{{m.number}}">{{m.name}}</option>
                                 {% endfor %}
                             </datalist>
