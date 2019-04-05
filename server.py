@@ -287,6 +287,13 @@ def match():
     if not match.mid: # The enquired match is not in db. May be deleted.
         return render_template("notfound.html")
 
+    cursor_score_in_match = g.conn.execute("SELECT * FROM score WHERE mid = (%s)", mid)
+    record = cursor_score_in_match.fetchone()
+    if not record.mid: # no match record in score
+        no_record = 1
+    else:
+        no_record = 0
+
     ## Scores
     home_scores = []
     cursor_home_scores = g.conn.execute("SELECT P.number, P.name, S.goal_num, S.nation, S.level, S.cname FROM score S JOIN player P ON P.number = S.number AND P.cname = S.cname AND P.nation = S.nation AND P.level = S.level WHERE S.mid = (%s) AND S.cname = (%s) AND S.own_goal = 0", mid, match.host)
@@ -322,7 +329,7 @@ def match():
     result = cursor_stadium.fetchone()
     stadium = result.stadium
 
-    return render_template("match.html", match = match, home_scores = home_scores, home_own_scores = home_own_scores, guest_scores = guest_scores, guest_own_scores = guest_own_scores, stadium = stadium, num_home_scores = num_home_scores, num_guest_scores = num_guest_scores)
+    return render_template("match.html", match = match, no_record = no_record, home_scores = home_scores, home_own_scores = home_own_scores, guest_scores = guest_scores, guest_own_scores = guest_own_scores, stadium = stadium, num_home_scores = num_home_scores, num_guest_scores = num_guest_scores)
 
 @app.route('/team')
 def team():
