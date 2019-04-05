@@ -444,7 +444,8 @@ def add_record():
         number_score = request.form['home_goal_number'+str(i)]
         own_goal = request.form['home_own_goal'+str(i)]
         if player != '':
-            print """home {} x{}({})""".format(player, number_score, own_goal)
+            sql = """INSERT INTO match VALUES ({0},{1},{2},{3},{4},{5},{6})""".format(mid, "'"+nation+"'", level, "'"+home_cname+"'", player, number_score, own_goal)
+            g.conn.execute(sql_format)
 
     # guest scores
     for i in range(5):
@@ -452,8 +453,8 @@ def add_record():
         number_score = request.form['guest_goal_number'+str(i)]
         own_goal = request.form['guest_own_goal'+str(i)]
         if player != '':
-            print """guest {} x{}({})""".format(player, number_score, own_goal)
-
+            sql = """INSERT INTO match VALUES ({0},{1},{2},{3},{4},{5},{6})""".format(mid, "'"+nation+"'", level, "'"+guest_cname+"'", player, number_score, own_goal)
+            g.conn.execute(sql_format)
 
     return redirect(url_for('match', mid = mid))
 
