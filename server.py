@@ -413,7 +413,16 @@ def add_player():
 
     # g.conn.execute("INSERT INTO player VALUES ({},{},\'{}\',{},{},\'{}\',\'{}\',{},\'{}\',\'{}\',{},\'{}\')".format(player.number, player.age, player.position, player.price, player.height, player.nationality, player.name, player.since, player.cname, player.nation, player.level, player.foot))
     sql = """INSERT INTO player VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11})"""
-    sql_format = sql.format(player.number, player.age, "'"+player.position+"'" if player.position not = NULL else NULL, player.price, player.height, player.nationality, player.name, player.since, player.cname, "'"+player.nation+"'" if player.nation not = NULL else NULL, player.level, player.foot))
+    sql_format = sql.format(player.number, player.age,
+                            "'"+player.position+"'" if player.position not = NULL else NULL,
+                            player.price, player.height,
+                            player.nationality,
+                            player.name,
+                            player.since,
+                            player.cname,
+                            "'"+player.nation+"'" if player.nation not = NULL else NULL,
+                            player.level,
+                            player.foot)
     return redirect(url_for('team', nation = player.nation, level = player.level, cname = player.cname))
 
 
