@@ -450,6 +450,7 @@ def add_record():
     # guest scores
     print "guest"
     for i in range(5):
+        print i
         player = request.form['guest_score'+str(i)]
         number_score = request.form['guest_goal_number'+str(i)]
         own_goal = request.form['guest_own_goal'+str(i)]
