@@ -330,6 +330,26 @@ def match():
 
     return render_template("match.html", match = match, no_record = no_record, home_scores = home_scores, home_own_scores = home_own_scores, guest_scores = guest_scores, guest_own_scores = guest_own_scores, stadium = stadium, num_home_scores = num_home_scores, num_guest_scores = num_guest_scores)
 
+@app.route('/add_match_record')
+def add_match_record():
+    mid = request.args.get('mid')
+    matches = g.conn.execute("SELECT * FROM match WHERE mid = (%s)", mid)
+    match = matches.fetchone()
+    if not match.mid: # The enquired match is not in db. May be deleted.
+        return render_template("notfound.html")
+
+    home_players = []
+    cursor_home_players = g.conn.execute("SELECT name, number FROM player WHERE nation = (%s) AND level = (%s) AND cname = (%s)", match.nation, match.level, match.host);
+    for result in cursor_home_players:
+        home_players.append(result)
+
+    guest_players = []
+    cursor_guest_players = g.conn.execute("SELECT name, number FROM player WHERE nation = (%s) AND level = (%s) AND cname = (%s)", match.nation, match.level, match.guest);
+    for result in cursor_guest_players:
+        guest_players.append(result)
+
+    return render_template("add_match_record.html", match = match, home_players = home_players, guest_players = guest_players)
+
 @app.route('/team')
 def team():
     cname = request.args.get('cname')

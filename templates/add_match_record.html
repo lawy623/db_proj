@@ -37,30 +37,28 @@
             <div>
                 <div style="float: left;width:40%;"><font size="6pt">
                     <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.host )}}">{{match.host}}</a><br><br>
-                    {% for m in home_scores %}
-                        <h><font size="5pt">({{m.number}})<a href="{{url_for('player', number = m.number, nation = m.nation, level = m.level, cname = m.cname )}}">{{m.name}}</a>&nbsp x{{m.goal_num}}</h><br>
+                    <table>
+                    {% for m in home_players %}
+                    <tr>
+                        <td><font size="3pt">{{m.number}}</td>
+                        <td><font size="3pt">{{m.name}}</td>
+                    </tr>
                     {% endfor %}
-                    {% for m in guest_own_scores %}
-                        <h><font size="5pt">({{m.number}})<a href="{{url_for('player', number = m.number, nation = m.nation, level = m.level, cname = m.cname )}}">{{m.name}}</a>&nbsp x{{m.goal_num}}(G)</h><br>
-                    {% endfor %}
+                    </table>
                 </div>
-                <div style="float: left;width:20%;"><font size="6pt"> {{num_home_scores}} &nbsp; : &nbsp; {{num_guest_scores}}</div>
                 <div style="float: left;width:40%;"><font size="6pt">
                     <a href="{{url_for('team', nation = match.nation, level = match.level, cname = match.guest )}}">{{match.guest}}</a><br><br>
-                    {% for m in guest_scores %}
-                        <h><font size="5pt">({{m.number}})<a href="{{url_for('player', number = m.number, nation = m.nation, level = m.level, cname = m.cname )}}">{{m.name}}</a>&nbsp; x{{m.goal_num}}</h><br>
+                    <table>
+                    {% for m in home_players %}
+                    <tr>
+                        <td><font size="3pt">{{m.number}}</td>
+                        <td><font size="3pt">{{m.name}}</td>
+                    </tr>
                     {% endfor %}
-                    {% for m in home_own_scores %}
-                        <h><font size="5pt">({{m.number}})<a href="{{url_for('player', number = m.number, nation = m.nation, level = m.level, cname = m.cname )}}">{{m.name}}</a>&nbsp x{{m.goal_num}}(G)</h><br>
-                    {% endfor %}
+                    </table>
                 </div>
             </div>
     </center></div>
-    <br><br><br><br><br><br><br><br><br><br><br><br>
-    {% if no_record == 1 %}
-        &nbsp&nbsp<a href="{{url_for('add_match_record', mid = match.mid)}}"><font size="2.5pt">Add record here</a>
-    {% endif %}
-
 
 </body>
 </html>
