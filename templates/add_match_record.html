@@ -49,12 +49,14 @@
                     <div style="float: left;width:40%;"><font size="6pt">
                         <h><font size ="3pt"> Who Scores?<h><br><br><br>
                             {% for i in range(5) %}
-                            <input type="number" list="players" />
-                                <datalist id="players">
-                                    {% for m in home_players %}
-                                        <option value="{{m.number}}">{{m.number}}-{{m.namer}}</option>
-                                    {% endfor %}
-                                </datalist>
+                            <div>
+                                <input type="number" list="players" />
+                                    <datalist id="players">
+                                        {% for m in home_players %}
+                                            <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
+                                        {% endfor %}
+                                    </datalist>
+                            </div>
                             {% endfor %}
                     </div>
 
@@ -72,7 +74,14 @@
                     <div style="float: left;width:40%;"><font size="6pt">
                         <h><font size ="3pt"> Who Scores?<h><br><br><br>
                             {% for i in range(5) %}
-                                <h><font size ="2pt">test<h><br><br>
+                            <div>
+                                <input type="number" list="players" />
+                                    <datalist id="players">
+                                        {% for m in home_players %}
+                                            <option value="{{m.number}}">{{m.number}}-{{m.name}}</option>
+                                        {% endfor %}
+                                    </datalist>
+                            </div>
                             {% endfor %}
                     </div>
                 </div>
