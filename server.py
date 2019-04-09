@@ -409,12 +409,12 @@ def player():
 def add_player():
     player = Player(request.form)
     if player.number == "NULL": ## Empty at number
-        return render_template("insert_null.html", player)
+        return render_template("insert_null.html", player = player)
 
     players_found = g.conn.execute("SELECT * FROM player WHERE number = (%s) AND cname = (%s) AND nation = (%s) AND level = (%s)", player.number, player.cname, player.nation, player.level)
     player_found = players_found.fetchone()
     if player_found.number: ## Duplicated number
-        return render_template("same_player.html", player)
+        return render_template("same_player.html", player = player)
 
     # format for the null cases.
     sql = """INSERT INTO player VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11})"""
