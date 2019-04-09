@@ -49,15 +49,15 @@
         {% for s in scores %}
             <table style="width:40%">
             <tr>
-                <td><td align="center">{{s.date}}</td>
-                <td><td align="center" style="border-left:1px solid black">{{s.time}}</td>
-                <td><td align="center" style="border-left:1px solid black">
+                <td><td align="center" style="width:15%">{{s.date}}</td>
+                <td><td align="center" style="border-left:1px solid black;width:15%">{{s.time}}</td>
+                <td><td align="center" style="border-left:1px solid black;width:35%">
                     <a href="{{url_for('team', nation = s.nation, level = s.level, cname = s.host )}}">{{s.host}}</a>
                     &nbsp; vs &nbsp;
                     <a href="{{url_for('team', nation = s.nation, level = s.level, cname = s.guest )}}">{{s.guest}}</a>
                 </td>
-                <td><td align="center" style="border-left:1px solid black">x{{s.goal_num}}</td>
-                <td><td align="center" style="border-left:1px solid black"><a href="{{url_for('match', mid = s.mid )}}"> See Match Details</a></td>
+                <td><td align="center" style="border-left:1px solid black;width:5%">x{{s.goal_num}}</td>
+                <td><td align="center" style="border-left:1px solid black;width:30%"><a href="{{url_for('match', mid = s.mid )}}"> See Match Details</a></td>
             </tr>
             </table>
         {% endfor %}
