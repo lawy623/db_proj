@@ -413,7 +413,7 @@ def add_player():
 
     players_found = g.conn.execute("SELECT * FROM player WHERE number = (%s) AND cname = (%s) AND nation = (%s) AND level = (%s)", player.number, player.cname, player.nation, player.level)
     player_found = players_found.fetchone()
-    if player_found.number: ## Duplicated number
+    if player_found and player_found.number: ## Duplicated number
         return render_template("same_player.html", player = player)
 
     # format for the null cases.
