@@ -397,7 +397,7 @@ def player():
         return render_template("notfound.html")
     ## Scores
     scores = []
-    cursor_scores = g.conn.execute("SELECT * FROM score S JOIN match M on S.mid = M.mid WHERE S.number = (%s) AND S.cname = (%s) AND S.nation = (%s) AND S.level = (%s)", number, cname, nation, level)
+    cursor_scores = g.conn.execute("SELECT * FROM score S JOIN match M on S.mid = M.mid WHERE S.number = (%s) AND S.cname = (%s) AND S.nation = (%s) AND S.level = (%s) AND S.own_goal = 0", number, cname, nation, level)
     for result in cursor_scores:
         scores.append(Score(result))
 
